@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jad Zoghaib — Data · Strategy · Product</title>
+<meta name="description" content="Jad Zoghaib — portfolio of data, AI, and product work across cybersecurity, supply chain, finance, HR, sports, and healthcare. Live demos, process intelligence, and operational software." />
+<meta property="og:title" content="Jad Zoghaib — Portfolio" />
+<meta property="og:description" content="Data · AI · Product across industries — with live, interactive demos." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AD%3C/text%3E%3C/svg%3E" />
+<style>
+:root{
+  --bg:#0a0b10; --bg-2:#0f111a; --panel:#141826; --panel-2:#1a2030; --line:#252c3f;
+  --text:#e8ecf5; --muted:#93a0b8; --dim:#6b7688;
+  --accent:#7c6cff; --accent-2:#4f9cf9; --glow:#7c6cff55;
+  --cyber:#f0616d; --supply:#4f9cf9; --hr:#2fbfa4; --finance:#e3a13c;
+  --sports:#c583f2; --health:#3fd0a8; --ai:#8a7cff; --cloud:#5ac8e0; --viz:#f5a623;
+  --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:11px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+
+/* ---------- background ---------- */
+.bg-orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 22s ease-in-out infinite}
+.orb.a{width:520px;height:520px;background:#5a4bd8;top:-140px;left:-80px}
+.orb.b{width:460px;height:460px;background:#1f6fd6;top:20%;right:-120px;animation-delay:-7s}
+.orb.c{width:400px;height:400px;background:#2a8f7e;bottom:-120px;left:30%;animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.06)}66%{transform:translate(-30px,20px) scale(.96)}}
+.grain{position:fixed;inset:0;z-index:-1;opacity:.025;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 6vw;backdrop-filter:blur(12px);background:#0a0b10aa;border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--line)}
+nav .logo{font-family:var(--mono);font-weight:500;letter-spacing:1px;font-size:15px}
+nav .logo b{color:var(--accent)}
+nav .links{display:flex;gap:26px;align-items:center;font-size:14px}
+nav .links a{color:var(--muted);transition:color .2s}
+nav .links a:hover{color:var(--text)}
+nav .cta{padding:8px 16px;border:1px solid var(--accent);border-radius:8px;color:var(--accent)!important;font-weight:600}
+nav .cta:hover{background:var(--accent);color:#fff!important}
+@media(max-width:720px){nav .links a:not(.cta){display:none}}
+
+/* ---------- hero ---------- */
+header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 6vw 60px;max-width:1200px;margin:0 auto}
+.eyebrow{font-family:var(--mono);color:var(--accent);font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:rise .7s .1s forwards}
+h1{font-size:clamp(40px,7vw,82px);font-weight:800;letter-spacing:-2px;line-height:1.02;margin-bottom:22px;opacity:0;animation:rise .7s .2s forwards}
+h1 .grad{background:linear-gradient(120deg,#a78bfa,#4f9cf9 50%,#2fbfa4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:clamp(17px,2.2vw,22px);color:var(--muted);max-width:680px;margin-bottom:16px;opacity:0;animation:rise .7s .32s forwards}
+.sub{color:var(--dim);max-width:640px;margin-bottom:36px;opacity:0;animation:rise .7s .4s forwards}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .7s .5s forwards}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;font-weight:600;font-size:15px;transition:transform .18s,box-shadow .18s,background .2s,border-color .2s;border:1px solid var(--line)}
+.btn.primary{background:linear-gradient(120deg,var(--accent),#5a7cf5);color:#fff;border:none;box-shadow:0 8px 30px var(--glow)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px var(--glow)}
+.btn.ghost{background:var(--panel);color:var(--text)}
+.btn.ghost:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.eyebrow,h1,.lede,.sub,.hero-cta{transform:translateY(18px)}
+
+/* stat strip */
+.stats{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap;opacity:0;animation:rise .7s .62s forwards;transform:translateY(18px)}
+.stat b{display:block;font-size:34px;font-weight:800;font-family:var(--mono);background:linear-gradient(120deg,#a78bfa,#4f9cf9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat span{color:var(--dim);font-size:13px;letter-spacing:.5px}
+
+/* ---------- work section ---------- */
+main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
+.sec-title{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.sec-title h2{font-size:32px;font-weight:800;letter-spacing:-1px}
+.sec-title .count{font-family:var(--mono);color:var(--dim);font-size:14px}
+.sec-note{color:var(--muted);margin-bottom:26px;max-width:640px}
+
+.controls{display:flex;flex-direction:column;gap:16px;margin-bottom:30px;position:sticky;top:66px;z-index:20;
+  padding:14px 0;background:linear-gradient(var(--bg),var(--bg) 70%,transparent)}
+.search{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 16px;max-width:380px}
+.search input{background:none;border:none;outline:none;color:var(--text);font-size:15px;width:100%;font-family:var(--sans)}
+.search svg{flex:none;stroke:var(--dim)}
+.filters{display:flex;gap:9px;flex-wrap:wrap}
+.chip{font-size:13px;font-weight:500;padding:7px 15px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted);cursor:pointer;transition:all .18s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.chip:hover{border-color:var(--muted);color:var(--text)}
+.chip.on{background:var(--text);color:#0a0b10;border-color:var(--text);font-weight:600}
+.chip .dot{width:8px;height:8px;border-radius:50%}
+.chip .k{font-family:var(--mono);font-size:11px;opacity:.6}
+
+/* cards grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.card{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
+  border-radius:16px;padding:22px;display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s,border-color .25s,box-shadow .25s}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{border-color:var(--card-accent,var(--accent));box-shadow:0 18px 50px #0007,0 0 0 1px var(--card-accent,var(--accent))33}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:.9}
+.card.hide{display:none}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
+.card .ind{font-family:var(--mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--card-accent,var(--accent));display:flex;align-items:center;gap:6px;font-weight:500}
+.card .ind .dot{width:7px;height:7px;border-radius:50%;background:var(--card-accent,var(--accent))}
+.card .flags{display:flex;gap:6px}
+.tagpill{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+.tagpill.star{color:#ffd479;border-color:#ffd47955;background:#ffd4790f}
+.tagpill.live{color:var(--hr);border-color:var(--hr);background:#2fbfa40f}
+.tagpill.priv{color:var(--dim);border-color:var(--line)}
+.card h3{font-size:19px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
+.card p{color:var(--muted);font-size:14px;flex:1;margin-bottom:16px}
+.card .tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tech span{font-size:11px;font-family:var(--mono);color:var(--dim);background:var(--panel-2);padding:3px 9px;border-radius:6px;border:1px solid var(--line)}
+.card .actions{display:flex;gap:10px;margin-top:auto}
+.act{flex:1;text-align:center;padding:10px;border-radius:9px;font-size:13px;font-weight:600;border:1px solid var(--line);transition:all .18s}
+.act.demo{background:var(--card-accent,var(--accent));color:#fff;border:none}
+.act.demo:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.act.code{color:var(--muted)}
+.act.code:hover{border-color:var(--text);color:var(--text)}
+.act.disabled{color:var(--dim);cursor:default;opacity:.6}
+.empty{grid-column:1/-1;text-align:center;color:var(--dim);padding:60px;font-family:var(--mono)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:60px 6vw;max-width:1200px;margin:0 auto;text-align:center}
+footer h2{font-size:28px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
+footer p{color:var(--muted);margin-bottom:28px}
+.foot-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.foot-note{color:var(--dim);font-size:13px;font-family:var(--mono)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div class="bg-orbs"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+<div class="grain"></div>
+
+<nav id="nav">
+  <a class="logo" href="#top"><b>JZ</b> · Jad Zoghaib</a>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+    <a class="cta" href="https://github.com/jadzoghaib" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="eyebrow">Data · Strategy · Product</div>
+  <h1>I turn messy data into<br><span class="grad">software people can act on.</span></h1>
+  <p class="lede">I'm Jad Zoghaib — I build operational tools, AI copilots, and process-intelligence dashboards across industries, from cybersecurity to supply chain to sports.</p>
+  <p class="sub">Business + data science background. I like the seam where strategy meets a working product — where an analysis becomes a system someone actually runs.</p>
+  <div class="hero-cta">
+    <a class="btn primary" href="#work">Explore the work →</a>
+    <a class="btn ghost" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://jadzoghaib.github.io/processlens/" target="_blank" rel="noopener">▶ Live demo: ProcessLens</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b data-count="17">0</b><span>PROJECTS</span></div>
+    <div class="stat"><b data-count="9">0</b><span>INDUSTRIES</span></div>
+    <div class="stat"><b data-count="4">0</b><span>LIVE DEMOS</span></div>
+    <div class="stat"><b data-count="6">0</b><span>END-TO-END BUILDS</span></div>
+  </div>
+</header>
+
+<main id="work">
+  <div class="sec-title"><h2>Selected work</h2><span class="count" id="shown-count"></span></div>
+  <p class="sec-note">Filter by industry or search. Cards with a green badge have a live, clickable demo. VaultTech is a private client-style project — described here, code on request.</p>
+
+  <div class="controls">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="text" placeholder="Search projects, tech, or keywords…" autocomplete="off" />
+    </div>
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer id="contact" class="reveal">
+  <h2>Let's build something.</h2>
+  <p>Open to roles and collaborations in data, product, and applied AI — across any industry.</p>
+  <div class="foot-links">
+    <a class="btn primary" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/jadzoghaib" target="_blank" rel="noopener">GitHub Profile</a>
+  </div>
+  <p class="foot-note">Built as a single hand-coded page · hosted on GitHub Pages · © <span id="yr"></span> Jad Zoghaib</p>
+</footer>
+
+<script>
+/* ---------------- project data ---------------- */
+const IND = {
+  cyber:   {label:"Cybersecurity",      color:"var(--cyber)"},
+  supply:  {label:"Supply Chain & Ops", color:"var(--supply)"},
+  hr:      {label:"HR & Talent",        color:"var(--hr)"},
+  finance: {label:"Finance",            color:"var(--finance)"},
+  sports:  {label:"Sports & Media",     color:"var(--sports)"},
+  health:  {label:"Healthcare",         color:"var(--health)"},
+  ai:      {label:"AI & Automation",    color:"var(--ai)"},
+  cloud:   {label:"Cloud & MLOps",      color:"var(--cloud)"},
+  viz:     {label:"Data Viz",           color:"var(--viz)"},
+};
+
+const PROJECTS = [
+  {t:"ProcessLens", ind:"supply", star:true,
+   d:"Celonis-style purchase-to-pay process intelligence on a 1.6M-event log — per-matching-type process discovery, throughput funnels, conformance checks, and a spend-weighted opportunity board. Interactive React cockpit.",
+   tech:["React","TypeScript","pandas","Process Mining"],
+   demo:"https://jadzoghaib.github.io/processlens/", code:"https://github.com/jadzoghaib/processlens"},
+
+  {t:"Aegis — SOC Triage Copilot", ind:"cyber", star:true,
+   d:"Security operations pipeline: multi-source alert ingestion, threat-intel enrichment, incident correlation, dual-classifier severity triage, and human-gated containment — every stage a visible n8n workflow.",
+   tech:["n8n","FastAPI","SQLite","MITRE ATT&CK"],
+   code:"https://github.com/jadzoghaib/aegis-soc-triage"},
+
+  {t:"TalentFlow — Recruiter Copilot", ind:"hr", star:true,
+   d:"An n8n-orchestrated hiring funnel over a hybrid matching engine: LLM profile extraction, cold-start scoring, recruiter review gates that resume paused workflows, and a weekly calibration loop.",
+   tech:["Node 24","n8n","LLM","TypeScript"],
+   code:"https://github.com/jadzoghaib/talentflow"},
+
+  {t:"Supply Chain Sentinel", ind:"supply", star:true,
+   d:"Autonomous supply-chain risk watch: GDELT + LLM analysis feeding scheduled per-supplier sweeps, geospatial impact scoring, and approval-gated client advisories.",
+   tech:["FastAPI","n8n","GDELT","LLM"],
+   code:"https://github.com/jadzoghaib/supply-chain-sentinel"},
+
+  {t:"TeamMatch — Talent Recommender", ind:"hr", star:true,
+   d:"A hybrid recommender that staffs engineers to projects at portfolio scale: matrix factorization + content + personality signals with a cohesion-aware optimizer. 800 engineers, 300 projects.",
+   tech:["React","TypeScript","Recommender","Optimization"],
+   demo:"https://google-talent-project-matching-reco.vercel.app", code:"https://github.com/jadzoghaib/Google-Talent-Project-Matching-Recommender-System"},
+
+  {t:"VaultTech — Forging Line", ind:"cloud", star:true, priv:true,
+   d:"An end-to-end cloud ML pipeline for an industrial forging line: a medallion data architecture feeding an XGBoost model, trained on SageMaker, served via ECS/Fargate, with a Streamlit operations dashboard.",
+   tech:["AWS SageMaker","ECS/Fargate","XGBoost","Streamlit"]},
+
+  {t:"NIL Monetization Platform", ind:"sports",
+   d:"An athlete name-image-likeness monetization platform — AI-assisted sponsorship matching between athletes and brands.",
+   tech:["TypeScript","React","AI Matching"],
+   demo:"https://ioc-nil-monetization-platform-dpm.vercel.app", code:"https://github.com/jadzoghaib/IOC-NIL-Monetization-Platform_DPM"},
+
+  {t:"Movie Recommender", ind:"sports",
+   d:"A MovieLens recommender with an EDA 'archive', a drift-simulation 'rabbit hole', and per-recommendation trade-off radars — deployed and live.",
+   tech:["TypeScript","Recommender","EDA"],
+   demo:"https://movie-rec-sys-lovat.vercel.app", code:"https://github.com/jadzoghaib/Movie-RecSys"},
+
+  {t:"Credit Default Prediction", ind:"finance",
+   d:"A credit-decision model on a Kaggle lending dataset — with a careful eye for leakage traps and an honest accuracy ceiling; best result from a diverse model stack.",
+   tech:["Python","scikit-learn","Jupyter"],
+   code:"https://github.com/jadzoghaib/DS-Finance-Credit-Default-"},
+
+  {t:"Sabadell Capstone", ind:"finance",
+   d:"A master's capstone in collaboration with Banco Sabadell — applied data analytics on a real banking problem.",
+   tech:["Python","Analytics","Jupyter"],
+   code:"https://github.com/jadzoghaib/Sabadell_Capstone"},
+
+  {t:"Breast Cancer Detection", ind:"health",
+   d:"A cloud-deployed ML classifier for breast-cancer detection — containerized and deployed as a final cloud-computing project.",
+   tech:["Python","AWS","ML"],
+   code:"https://github.com/jadzoghaib/CC_Breast_Cancer_Detection"},
+
+  {t:"Disaster Classification (FEMA)", ind:"ai",
+   d:"A classification model over FEMA incident data to predict disaster type — public-safety analytics.",
+   tech:["Python","ML","Jupyter"],
+   code:"https://github.com/jadzoghaib/Disaster_Classification_FEMA"},
+
+  {t:"Grocery Shopping Optimizer", ind:"supply",
+   d:"Linear programming meets real life: finds the cheapest combination of stores to complete a full grocery list.",
+   tech:["Python","LP","Optimization"],
+   code:"https://github.com/jadzoghaib/Grocery-Shopping-Optimizer-PDAI26"},
+
+  {t:"Hotel Booking AI", ind:"ai",
+   d:"Predictive analytics for hotel-booking cancellations — turning reservation data into a risk signal.",
+   tech:["Python","ML","Jupyter"],
+   code:"https://github.com/jadzoghaib/Hotel_Booking_AI2"},
+
+  {t:"Boardroom Simulator", ind:"ai",
+   d:"An AI-driven boardroom decision simulator — a project in agentic decision-making.",
+   tech:["Python","AI","Simulation"],
+   code:"https://github.com/jadzoghaib/Boardroom_Simulator_PDAI"},
+
+  {t:"Akinator", ind:"ai",
+   d:"A guess-who engine — a compact take on the classic 20-questions inference game.",
+   tech:["Python","Inference"],
+   code:"https://github.com/jadzoghaib/Akinator_PDAI"},
+
+  {t:"Hamlet Data Viz", ind:"viz",
+   d:"NLP + visual analysis of Shakespeare's Hamlet — word frequency, sentiment arcs, and character networks in R.",
+   tech:["R","ggplot2","NLP"],
+   code:"https://github.com/jadzoghaib/R_Hamlet_DataVizClub"},
+];
+
+/* ---------------- render ---------------- */
+const grid = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+let activeInd = 'all', query = '';
+
+function cardHTML(p){
+  const ind = IND[p.ind];
+  const flags = [
+    p.star ? '<span class="tagpill star">★ Featured</span>' : '',
+    p.demo ? '<span class="tagpill live">● Live</span>' : '',
+    p.priv ? '<span class="tagpill priv">Private</span>' : '',
+  ].join('');
+  const demoBtn = p.demo
+    ? `<a class="act demo" href="${p.demo}" target="_blank" rel="noopener">Live demo ↗</a>` : '';
+  const codeBtn = p.code
+    ? `<a class="act code" href="${p.code}" target="_blank" rel="noopener">Code ↗</a>`
+    : (p.priv ? `<span class="act disabled">Private repo</span>` : '');
+  const hay = (p.t+' '+p.d+' '+p.tech.join(' ')+' '+ind.label).toLowerCase();
+  return `<article class="card" data-ind="${p.ind}" data-hay="${hay.replace(/"/g,'')}" style="--card-accent:${ind.color}">
+    <div class="top">
+      <span class="ind"><span class="dot"></span>${ind.label}</span>
+      <span class="flags">${flags}</span>
+    </div>
+    <h3>${p.t}</h3>
+    <p>${p.d}</p>
+    <div class="tech">${p.tech.map(x=>`<span>${x}</span>`).join('')}</div>
+    <div class="actions">${demoBtn}${codeBtn || '<span class="act disabled">—</span>'}</div>
+  </article>`;
+}
+
+grid.innerHTML = PROJECTS.map(cardHTML).join('');
+
+/* filter chips with per-industry counts */
+const counts = PROJECTS.reduce((m,p)=>(m[p.ind]=(m[p.ind]||0)+1,m),{});
+const chipData = [['all','All']].concat(Object.entries(IND).filter(([k])=>counts[k]).map(([k,v])=>[k,v.label]));
+filtersEl.innerHTML = chipData.map(([k,label])=>{
+  const n = k==='all' ? PROJECTS.length : counts[k];
+  const dot = k==='all' ? '' : `<span class="dot" style="background:${IND[k].color}"></span>`;
+  return `<button class="chip ${k==='all'?'on':''}" data-ind="${k}">${dot}${label}<span class="k">${n}</span></button>`;
+}).join('');
+
+function apply(){
+  const cards = grid.querySelectorAll('.card');
+  let shown=0;
+  cards.forEach(c=>{
+    const okInd = activeInd==='all' || c.dataset.ind===activeInd;
+    const okQ = !query || c.dataset.hay.includes(query);
+    const vis = okInd && okQ;
+    c.classList.toggle('hide', !vis);
+    if(vis) shown++;
+  });
+  document.getElementById('shown-count').textContent = shown+' shown';
+  let empty = grid.querySelector('.empty');
+  if(shown===0 && !empty){ grid.insertAdjacentHTML('beforeend','<div class="empty">No projects match — try another filter.</div>'); }
+  if(shown>0 && empty){ empty.remove(); }
+  // re-observe newly visible cards for reveal
+  grid.querySelectorAll('.card:not(.hide)').forEach(c=>io.observe(c));
+}
+
+filtersEl.addEventListener('click', e=>{
+  const chip = e.target.closest('.chip'); if(!chip) return;
+  filtersEl.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c===chip));
+  activeInd = chip.dataset.ind; apply();
+});
+document.getElementById('search').addEventListener('input', e=>{ query = e.target.value.trim().toLowerCase(); apply(); });
+
+/* ---------------- reveal on scroll ---------------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+grid.querySelectorAll('.card').forEach((c,i)=>{ c.style.transitionDelay=(Math.min(i,8)*40)+'ms'; io.observe(c); });
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+
+/* ---------------- misc ---------------- */
+document.getElementById('shown-count').textContent = PROJECTS.length+' shown';
+document.getElementById('yr').textContent = new Date().getFullYear();
+const nav = document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled', scrollY>20));
+
+/* count-up stats (plain rAF — reliable even in throttled tabs) */
+function countUp(el){
+  const target = +el.dataset.count; const dur=1100; const t0=performance.now();
+  (function tick(now){
+    const p = Math.min(1,(now-t0)/dur);
+    el.textContent = Math.round(target*(1-Math.pow(1-p,3)));
+    if(p<1) requestAnimationFrame(tick); else el.textContent=target;
+  })(t0);
+}
+const statsIO = new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting){ countUp(e.target); statsIO.unobserve(e.target);} }),{threshold:.6});
+document.querySelectorAll('.stat b').forEach(s=>statsIO.observe(s));
+setTimeout(()=>document.querySelectorAll('.stat b').forEach(s=>{ if(s.textContent==='0') s.textContent=s.dataset.count; }),1800);
+</script>
+</body>
+</html>
