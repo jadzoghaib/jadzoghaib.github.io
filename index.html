@@ -121,6 +121,10 @@ main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
 .act.code{color:var(--muted)}
 .act.code:hover{border-color:var(--text);color:var(--text)}
 .act.disabled{color:var(--dim);cursor:default;opacity:.6}
+.actions.deep{margin-top:8px}
+.act.docs{color:var(--card-accent,var(--accent));border-color:var(--card-accent,var(--accent));
+  border-style:dashed;background:transparent}
+.act.docs:hover{border-style:solid;transform:translateY(-2px)}
 .empty{grid-column:1/-1;text-align:center;color:var(--dim);padding:60px;font-family:var(--mono)}
 
 /* ---------- footer ---------- */
@@ -213,7 +217,9 @@ const PROJECTS = [
    d:"Security operations pipeline: multi-source alert ingestion, threat-intel enrichment, incident correlation, dual-classifier severity triage, and human-gated containment — every stage a visible n8n workflow.",
    tech:["n8n","FastAPI","SQLite","MITRE ATT&CK"],
    demo:"https://aegis-soc-triage-ev2stjrshlc4r9r8pwajlq.streamlit.app/",
-   code:"https://github.com/jadzoghaib/aegis-soc-triage"},
+   code:"https://github.com/jadzoghaib/aegis-soc-triage",
+   docs:{label:"Interactive threat manual",
+         url:"https://jadzoghaib.github.io/aegis-soc-triage/threat-manual.html"}},
 
   {t:"TalentFlow — Recruiter Copilot", ind:"hr", star:true,
    d:"An n8n-orchestrated hiring funnel over a hybrid matching engine: LLM profile extraction, cold-start scoring, recruiter review gates that resume paused workflows, and a weekly calibration loop.",
@@ -307,6 +313,8 @@ function cardHTML(p){
   const codeBtn = p.code
     ? `<a class="act code" href="${p.code}" target="_blank" rel="noopener">Code ↗</a>`
     : (p.priv ? `<span class="act disabled">Private repo</span>` : '');
+  const docsBtn = p.docs
+    ? `<a class="act docs" href="${p.docs.url}" target="_blank" rel="noopener">${p.docs.label} ↗</a>` : '';
   const hay = (p.t+' '+p.d+' '+p.tech.join(' ')+' '+ind.label).toLowerCase();
   return `<article class="card" data-ind="${p.ind}" data-hay="${hay.replace(/"/g,'')}" style="--card-accent:${ind.color}">
     <div class="top">
@@ -317,6 +325,7 @@ function cardHTML(p){
     <p>${p.d}</p>
     <div class="tech">${p.tech.map(x=>`<span>${x}</span>`).join('')}</div>
     <div class="actions">${demoBtn}${codeBtn || '<span class="act disabled">—</span>'}</div>
+    ${docsBtn ? `<div class="actions deep">${docsBtn}</div>` : ''}
   </article>`;
 }
 
