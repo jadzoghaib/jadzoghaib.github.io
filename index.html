@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Jad Zoghaib — Data · Strategy · Product</title>
-<meta name="description" content="Jad Zoghaib — portfolio of data, AI, and product work across cybersecurity, supply chain, finance, HR, sports, and healthcare. Live demos, process intelligence, and operational software." />
+<meta name="description" content="Jad Zoghaib — portfolio of data, AI, and product work across life sciences, cybersecurity, supply chain, energy, finance, HR and sports. Live demos, process intelligence, and operational software." />
 <meta property="og:title" content="Jad Zoghaib — Portfolio" />
 <meta property="og:description" content="Data · AI · Product across industries — with live, interactive demos." />
 <meta property="og:type" content="website" />
@@ -19,6 +19,7 @@
   --accent:#7c6cff; --accent-2:#4f9cf9; --glow:#7c6cff55;
   --cyber:#f0616d; --supply:#4f9cf9; --hr:#2fbfa4; --finance:#e3a13c;
   --sports:#c583f2; --health:#3fd0a8; --ai:#8a7cff; --cloud:#5ac8e0; --viz:#f5a623;
+  --energy:#d98c5f;
   --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -94,7 +95,9 @@ main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
 .chip .k{font-family:var(--mono);font-size:11px;opacity:.6}
 
 /* cards grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+/* min() keeps the track from forcing a 340px column on phones narrower than that,
+   which otherwise scrolls the whole page sideways. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:20px}
 .card{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
   border-radius:16px;padding:22px;display:flex;flex-direction:column;overflow:hidden;
   opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s,border-color .25s,box-shadow .25s}
@@ -102,13 +105,14 @@ main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
 .card:hover{border-color:var(--card-accent,var(--accent));box-shadow:0 18px 50px #0007,0 0 0 1px var(--card-accent,var(--accent))33}
 .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:.9}
 .card.hide{display:none}
-.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
-.card .ind{font-family:var(--mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--card-accent,var(--accent));display:flex;align-items:center;gap:6px;font-weight:500}
-.card .ind .dot{width:7px;height:7px;border-radius:50%;background:var(--card-accent,var(--accent))}
-.card .flags{display:flex;gap:6px}
-.tagpill{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px 12px;margin-bottom:14px;flex-wrap:wrap}
+.card .ind{font-family:var(--mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--card-accent,var(--accent));display:flex;align-items:center;gap:6px;font-weight:500;white-space:nowrap}
+.card .ind .dot{width:7px;height:7px;border-radius:50%;background:var(--card-accent,var(--accent));flex:none}
+.card .flags{display:flex;gap:6px;flex-wrap:wrap}
+.tagpill{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
 .tagpill.star{color:#ffd479;border-color:#ffd47955;background:#ffd4790f}
 .tagpill.live{color:var(--hr);border-color:var(--hr);background:#2fbfa40f}
+.tagpill.wake{color:#e0a83e;border-color:#e0a83e66;background:#e0a83e0f;cursor:help}
 .tagpill.priv{color:var(--dim);border-color:var(--line)}
 .card h3{font-size:19px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
 .card p{color:var(--muted);font-size:14px;flex:1;margin-bottom:16px}
@@ -135,6 +139,14 @@ footer p{color:var(--muted);margin-bottom:28px}
 .foot-note{color:var(--dim);font-size:13px;font-family:var(--mono)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
 .reveal.in{opacity:1;transform:translateY(0)}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .eyebrow,h1,.lede,.sub,.hero-cta,.stats{opacity:1;transform:none}
+  .card,.reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -153,7 +165,7 @@ footer p{color:var(--muted);margin-bottom:28px}
 <header id="top">
   <div class="eyebrow">Data · Strategy · Product</div>
   <h1>I turn messy data into<br><span class="grad">software people can act on.</span></h1>
-  <p class="lede">I'm Jad Zoghaib — I build operational tools, AI copilots, and process-intelligence dashboards across industries, from cybersecurity to supply chain to sports.</p>
+  <p class="lede">I'm Jad Zoghaib — I build operational tools, AI copilots, and process-intelligence consoles across industries, from life sciences to cybersecurity to supply chain.</p>
   <p class="sub">Business + data science background. I like the seam where strategy meets a working product — where an analysis becomes a system someone actually runs.</p>
   <div class="hero-cta">
     <a class="btn primary" href="#work">Explore the work →</a>
@@ -161,16 +173,16 @@ footer p{color:var(--muted);margin-bottom:28px}
     <a class="btn ghost" href="https://jadzoghaib.github.io/processlens/" target="_blank" rel="noopener">▶ Live demo: ProcessLens</a>
   </div>
   <div class="stats">
-    <div class="stat"><b data-count="17">0</b><span>PROJECTS</span></div>
-    <div class="stat"><b data-count="9">0</b><span>INDUSTRIES</span></div>
-    <div class="stat"><b data-count="5">0</b><span>LIVE DEMOS</span></div>
-    <div class="stat"><b data-count="6">0</b><span>END-TO-END BUILDS</span></div>
+    <div class="stat"><b data-count="20">0</b><span>PROJECTS</span></div>
+    <div class="stat"><b data-count="10">0</b><span>INDUSTRIES</span></div>
+    <div class="stat"><b data-count="8">0</b><span>LIVE DEMOS</span></div>
+    <div class="stat"><b data-count="9">0</b><span>END-TO-END BUILDS</span></div>
   </div>
 </header>
 
 <main id="work">
   <div class="sec-title"><h2>Selected work</h2><span class="count" id="shown-count"></span></div>
-  <p class="sec-note">Filter by industry or search. Cards with a green badge have a live, clickable demo. VaultTech is a private client-style project — described here, code on request.</p>
+  <p class="sec-note">Filter by industry or search. A green badge means the demo opens instantly; an amber one is hosted on Streamlit's free tier and takes about half a minute to wake on the first click. VaultTech is a private client-style project — described here, code on request.</p>
 
   <div class="controls">
     <div class="search">
@@ -196,18 +208,27 @@ footer p{color:var(--muted);margin-bottom:28px}
 <script>
 /* ---------------- project data ---------------- */
 const IND = {
-  cyber:   {label:"Cybersecurity",      color:"var(--cyber)"},
-  supply:  {label:"Supply Chain & Ops", color:"var(--supply)"},
-  hr:      {label:"HR & Talent",        color:"var(--hr)"},
-  finance: {label:"Finance",            color:"var(--finance)"},
-  sports:  {label:"Sports & Media",     color:"var(--sports)"},
-  health:  {label:"Healthcare",         color:"var(--health)"},
-  ai:      {label:"AI & Automation",    color:"var(--ai)"},
-  cloud:   {label:"Cloud & MLOps",      color:"var(--cloud)"},
-  viz:     {label:"Data Viz",           color:"var(--viz)"},
+  health:  {label:"Healthcare & Life Sciences", color:"var(--health)"},
+  supply:  {label:"Supply Chain & Ops",         color:"var(--supply)"},
+  cyber:   {label:"Cybersecurity",              color:"var(--cyber)"},
+  hr:      {label:"HR & Talent",                color:"var(--hr)"},
+  sports:  {label:"Sports & Media",             color:"var(--sports)"},
+  finance: {label:"Finance",                    color:"var(--finance)"},
+  energy:  {label:"Energy",                     color:"var(--energy)"},
+  cloud:   {label:"Cloud & MLOps",              color:"var(--cloud)"},
+  ai:      {label:"AI & Automation",            color:"var(--ai)"},
+  viz:     {label:"Data Viz",                   color:"var(--viz)"},
 };
 
 const PROJECTS = [
+  {t:"Genetic Variant Triage", ind:"health", star:true,
+   d:"Thousands of genetic variants sit unclassified — not benign, not pathogenic, just uncertain. This console reconciles AlphaMissense's predictions against ClinVar's clinical assertions on AlphaFold structure, then grades how much evidence actually backs each call. Rebuilds weekly against live ClinVar.",
+   tech:["AlphaFold","AlphaMissense","ClinVar","DuckDB","3Dmol.js"],
+   demo:"https://jadzoghaib.github.io/genetic-variant-triage/",
+   code:"https://github.com/jadzoghaib/genetic-variant-triage",
+   docs:{label:"Illustrated manual — how it works",
+         url:"https://jadzoghaib.github.io/genetic-variant-triage/manual.html"}},
+
   {t:"ProcessLens", ind:"supply", star:true,
    d:"Celonis-style purchase-to-pay process intelligence on a 1.6M-event log — per-matching-type process discovery, throughput funnels, conformance checks, and a spend-weighted opportunity board. Interactive React cockpit.",
    tech:["React","TypeScript","pandas","Process Mining"],
@@ -216,10 +237,16 @@ const PROJECTS = [
   {t:"Aegis — SOC Triage Copilot", ind:"cyber", star:true,
    d:"Security operations pipeline: multi-source alert ingestion, threat-intel enrichment, incident correlation, dual-classifier severity triage, and human-gated containment — every stage a visible n8n workflow.",
    tech:["n8n","FastAPI","SQLite","MITRE ATT&CK"],
-   demo:"https://aegis-soc-triage-ev2stjrshlc4r9r8pwajlq.streamlit.app/",
+   demo:"https://aegis-soc-triage-ev2stjrshlc4r9r8pwajlq.streamlit.app/", wake:true,
    code:"https://github.com/jadzoghaib/aegis-soc-triage",
-   docs:{label:"Interactive threat manual",
-         url:"https://jadzoghaib.github.io/aegis-soc-triage/threat-manual.html"}},
+   docs:{label:"Documentation — threat manual + 3 specs",
+         url:"https://jadzoghaib.github.io/aegis-soc-triage/"}},
+
+  {t:"Batch Investigation Console", ind:"health", star:true,
+   d:"Traces tablet quality back to raw-material attributes and compression conditions across 1,005 real production batches. Built around one finding: 22 of 44 candidate drivers reverse their correlation sign when compared pooled instead of within a peer cohort — so every comparison here is cohort-scoped.",
+   tech:["Python","Streamlit","pandas","Root-cause analysis"],
+   demo:"https://jadzoghaib-batch-traceability-root-cause-studio-for--app-zrys7k.streamlit.app/", wake:true,
+   code:"https://github.com/jadzoghaib/Batch-Traceability-Root-Cause-Studio-for-Pharma-Manufacturing"},
 
   {t:"TalentFlow — Recruiter Copilot", ind:"hr", star:true,
    d:"An n8n-orchestrated hiring funnel over a hybrid matching engine: LLM profile extraction, cold-start scoring, recruiter review gates that resume paused workflows, and a weekly calibration loop.",
@@ -235,6 +262,21 @@ const PROJECTS = [
    d:"A hybrid recommender that staffs engineers to projects at portfolio scale: matrix factorization + content + personality signals with a cohesion-aware optimizer. 800 engineers, 300 projects.",
    tech:["React","TypeScript","Recommender","Optimization"],
    demo:"https://google-talent-project-matching-reco.vercel.app", code:"https://github.com/jadzoghaib/Google-Talent-Project-Matching-Recommender-System"},
+
+  {t:"EnzySelect", ind:"health",
+   d:"Prioritizes candidate enzymes for PET plastic degradation against operating conditions and a testing budget — transparent, decomposable scoring with real AlphaFold and UniProt structural anchors. The candidate set is synthetic and the app says so on every screen: a prioritization signal, not a scientific claim.",
+   tech:["Python","Streamlit","AlphaFold","UniProt"],
+   demo:"https://enzyselect.streamlit.app/", code:"https://github.com/jadzoghaib/enzyselect"},
+
+  {t:"OilShield", ind:"energy",
+   d:"Strategic stress-testing console for oil & gas portfolios: build a company from typed assets, shape a 36-month Brent scenario, and watch break-evens, liquidity headroom and shut-in economics recompute. Revenues float with the commodity price while fixed costs keep running — that asymmetry is the product.",
+   tech:["Python","Streamlit","Plotly","Financial modelling"],
+   code:"https://github.com/jadzoghaib/oilshield"},
+
+  {t:"Stride", ind:"sports",
+   d:"Athlete monetization and sponsorship platform: athletes own evidence-based marketability analytics, sponsors match campaign briefs against the pool with fully decomposable scoring, and the deal pipeline runs end to end. The analytics core is the CreatorLens engine, vendored and integrated rather than reimplemented.",
+   tech:["FastAPI","React","Supabase","TypeScript"],
+   code:"https://github.com/jadzoghaib/stride"},
 
   {t:"VaultTech — Forging Line", ind:"cloud", star:true, priv:true,
    d:"An end-to-end cloud ML pipeline for an industrial forging line: a medallion data architecture feeding an XGBoost model, trained on SageMaker, served via ECS/Fargate, with a Streamlit operations dashboard.",
@@ -265,11 +307,6 @@ const PROJECTS = [
    tech:["Python","AWS","ML"],
    code:"https://github.com/jadzoghaib/CC_Breast_Cancer_Detection"},
 
-  {t:"Disaster Classification (FEMA)", ind:"ai",
-   d:"A classification model over FEMA incident data to predict disaster type — public-safety analytics.",
-   tech:["Python","ML","Jupyter"],
-   code:"https://github.com/jadzoghaib/Disaster_Classification_FEMA"},
-
   {t:"Grocery Shopping Optimizer", ind:"supply",
    d:"Linear programming meets real life: finds the cheapest combination of stores to complete a full grocery list.",
    tech:["Python","LP","Optimization"],
@@ -285,11 +322,6 @@ const PROJECTS = [
    tech:["Python","AI","Simulation"],
    code:"https://github.com/jadzoghaib/Boardroom_Simulator_PDAI"},
 
-  {t:"Akinator", ind:"ai",
-   d:"A guess-who engine — a compact take on the classic 20-questions inference game.",
-   tech:["Python","Inference"],
-   code:"https://github.com/jadzoghaib/Akinator_PDAI"},
-
   {t:"Hamlet Data Viz", ind:"viz",
    d:"NLP + visual analysis of Shakespeare's Hamlet — word frequency, sentiment arcs, and character networks in R.",
    tech:["R","ggplot2","NLP"],
@@ -303,13 +335,16 @@ let activeInd = 'all', query = '';
 
 function cardHTML(p){
   const ind = IND[p.ind];
+  const WAKE_NOTE = 'Hosted on the Streamlit free tier, so it sleeps when idle — the first click wakes it, which takes about 30 seconds.';
   const flags = [
     p.star ? '<span class="tagpill star">★ Featured</span>' : '',
-    p.demo ? '<span class="tagpill live">● Live</span>' : '',
+    p.demo ? (p.wake
+      ? `<span class="tagpill wake" title="${WAKE_NOTE}">◐ Wakes on click</span>`
+      : '<span class="tagpill live">● Live</span>') : '',
     p.priv ? '<span class="tagpill priv">Private</span>' : '',
   ].join('');
   const demoBtn = p.demo
-    ? `<a class="act demo" href="${p.demo}" target="_blank" rel="noopener">Live demo ↗</a>` : '';
+    ? `<a class="act demo" href="${p.demo}" target="_blank" rel="noopener"${p.wake ? ` title="${WAKE_NOTE}"` : ''}>${p.wake ? 'Wake the demo ↗' : 'Live demo ↗'}</a>` : '';
   const codeBtn = p.code
     ? `<a class="act code" href="${p.code}" target="_blank" rel="noopener">Code ↗</a>`
     : (p.priv ? `<span class="act disabled">Private repo</span>` : '');
@@ -389,7 +424,13 @@ function countUp(el){
 }
 const statsIO = new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting){ countUp(e.target); statsIO.unobserve(e.target);} }),{threshold:.6});
 document.querySelectorAll('.stat b').forEach(s=>statsIO.observe(s));
-setTimeout(()=>document.querySelectorAll('.stat b').forEach(s=>{ if(s.textContent==='0') s.textContent=s.dataset.count; }),1800);
+/* Safety net: if the tab is throttled, rAF can stall mid-count and leave a wrong
+   number on screen (20 showing as "2"). Snap anything that isn't final to final.
+   Same for the reveal observer — content must never stay invisible. */
+setTimeout(()=>{
+  document.querySelectorAll('.stat b').forEach(s=>{ if(s.textContent!==s.dataset.count) s.textContent=s.dataset.count; });
+  document.querySelectorAll('.card:not(.hide),.reveal').forEach(el=>el.classList.add('in'));
+},2500);
 </script>
 </body>
 </html>
