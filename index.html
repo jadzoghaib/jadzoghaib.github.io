@@ -175,14 +175,14 @@ footer p{color:var(--muted);margin-bottom:28px}
   <div class="stats">
     <div class="stat"><b data-count="20">0</b><span>PROJECTS</span></div>
     <div class="stat"><b data-count="10">0</b><span>INDUSTRIES</span></div>
-    <div class="stat"><b data-count="8">0</b><span>LIVE DEMOS</span></div>
+    <div class="stat"><b data-count="9">0</b><span>LIVE DEMOS</span></div>
     <div class="stat"><b data-count="9">0</b><span>END-TO-END BUILDS</span></div>
   </div>
 </header>
 
 <main id="work">
   <div class="sec-title"><h2>Selected work</h2><span class="count" id="shown-count"></span></div>
-  <p class="sec-note">Filter by industry or search. A green badge means the demo opens instantly; an amber one is hosted on Streamlit's free tier and takes about half a minute to wake on the first click. VaultTech is a private client-style project — described here, code on request.</p>
+  <p class="sec-note">Filter by industry or search. A green badge means the demo opens instantly; an amber one is hosted on a free tier that sleeps when idle, so the first click wakes it — up to a minute. VaultTech is a private client-style project — described here, code on request.</p>
 
   <div class="controls">
     <div class="search">
@@ -307,9 +307,10 @@ const PROJECTS = [
    tech:["Python","AWS","ML"],
    code:"https://github.com/jadzoghaib/CC_Breast_Cancer_Detection"},
 
-  {t:"Grocery Shopping Optimizer", ind:"supply",
-   d:"Linear programming meets real life: finds the cheapest combination of stores to complete a full grocery list.",
-   tech:["Python","LP","Optimization"],
+  {t:"GroceryAI", ind:"supply",
+   d:"Full-stack nutrition and grocery app: meal planning, LLM shopping-list generation against real Mercadona supermarket data, a fridge-to-recipe engine, a body optimizer, a health feed, and a multi-agent basket debate — all one SPA over a FastAPI server.",
+   tech:["FastAPI","LangGraph","Groq LLM","Python"],
+   demo:"https://grocery-shopping-optimizer-pdai26.onrender.com", wake:true,
    code:"https://github.com/jadzoghaib/Grocery-Shopping-Optimizer-PDAI26"},
 
   {t:"Hotel Booking AI", ind:"ai",
@@ -335,7 +336,7 @@ let activeInd = 'all', query = '';
 
 function cardHTML(p){
   const ind = IND[p.ind];
-  const WAKE_NOTE = 'Hosted on the Streamlit free tier, so it sleeps when idle — the first click wakes it, which takes about 30 seconds.';
+  const WAKE_NOTE = 'Hosted on a free tier that sleeps when idle — the first click wakes it, which can take up to a minute.';
   const flags = [
     p.star ? '<span class="tagpill star">★ Featured</span>' : '',
     p.demo ? (p.wake
