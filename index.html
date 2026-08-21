@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jad Zoghaib · Strategy, Data, Deployed Systems</title>
-<meta name="description" content="Jad Zoghaib. Four years of management consulting across the MENA region, an MSc in Business Analytics at ESADE, and twenty operational systems built and deployed. Full CV, source and live demos." />
+<title>Jad Zoghaib · Strategy, Data &amp; AI</title>
+<meta name="description" content="Jad Zoghaib. Strategy and analytics professional based in Barcelona. Four years of management consulting across the Middle East and North Africa, and an MSc in Business Analytics at ESADE. Portfolio, full CV and live demos." />
 <meta name="author" content="Jad Zoghaib" />
-<meta property="og:title" content="Jad Zoghaib · Strategy, Data, Deployed Systems" />
-<meta property="og:description" content="Strategy work ends at the recommendation. I build what comes after. Full CV, source and live demos." />
+<meta property="og:title" content="Jad Zoghaib · Strategy, Data &amp; AI" />
+<meta property="og:description" content="Strategy and analytics, based in Barcelona. Portfolio, full CV, source and live demos." />
 <meta property="og:type" content="profile" />
 <meta property="og:url" content="https://jadzoghaib.github.io/" />
 <meta name="twitter:card" content="summary" />
@@ -94,8 +94,14 @@ nav .links a.nl.active::after{transform:scaleX(1)}
 /* ---------- hero ---------- */
 header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
   padding:120px 6vw 60px;max-width:1200px;margin:0 auto}
-.eyebrow{font-family:var(--mono);color:var(--accent);font-size:13px;letter-spacing:2.5px;
-  text-transform:uppercase;margin-bottom:20px;opacity:0;animation:rise .7s .1s forwards}
+.greeting{font-size:clamp(19px,2.7vw,27px);font-weight:500;color:var(--muted);
+  margin-bottom:10px;opacity:0;animation:rise .7s .1s forwards}
+/* isolate keeps the Arabic greeting from flipping the ", I'm" that follows it */
+.greet-text{color:var(--accent);font-weight:700;unicode-bidi:isolate;
+  font-family:'Inter','Segoe UI','Noto Sans Arabic','Geeza Pro',system-ui,sans-serif}
+.caret{display:inline-block;width:2px;height:1em;background:var(--accent);
+  margin-left:3px;vertical-align:-.13em;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 h1{font-size:clamp(38px,6.6vw,78px);font-weight:800;letter-spacing:-2px;line-height:1.03;
   margin-bottom:22px;opacity:0;animation:rise .7s .2s forwards}
 h1 .grad{background:linear-gradient(120deg,#a78bfa,#4f9cf9 50%,#2fbfa4);
@@ -112,7 +118,7 @@ h1 .grad{background:linear-gradient(120deg,#a78bfa,#4f9cf9 50%,#2fbfa4);
 .btn.ghost{background:var(--panel);color:var(--text)}
 .btn.ghost:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
 @keyframes rise{to{opacity:1;transform:translateY(0)}}
-.eyebrow,h1,.lede,.sub,.hero-cta,.stats{transform:translateY(18px)}
+.greeting,h1,.lede,.sub,.hero-cta,.stats{transform:translateY(18px)}
 
 .stats{display:flex;gap:44px;margin-top:56px;flex-wrap:wrap;opacity:0;animation:rise .7s .62s forwards}
 .stat b{display:block;font-size:34px;font-weight:800;font-family:var(--mono);
@@ -273,7 +279,8 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
     transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .eyebrow,h1,.lede,.sub,.hero-cta,.stats{opacity:1;transform:none}
+  .greeting,h1,.lede,.sub,.hero-cta,.stats{opacity:1;transform:none}
+  .caret{display:none}
   .card,.reveal{opacity:1;transform:none}
 }
 
@@ -288,10 +295,7 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
   .print-id h2{font-size:21pt;font-weight:800;letter-spacing:-.6px;line-height:1.1;color:#111!important}
   .print-id p{font-size:9pt;color:#333!important;margin-top:4px;line-height:1.45}
   .print-id{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #ddd}
-  h1{font-size:12pt;font-weight:700;letter-spacing:-.2px;margin-bottom:8px;color:#444!important;animation:none;opacity:1;transform:none}
-  h1 br{display:none}
-  h1 .grad{-webkit-text-fill-color:#444;color:#444}
-  .eyebrow,.screen-note{display:none!important}
+  .greeting,h1,.screen-note{display:none!important}
   .lede,.sub{color:#333!important;font-size:10pt;max-width:none;animation:none;opacity:1;transform:none;margin-bottom:6px}
   .stats{gap:22px;margin-top:14px;animation:none;opacity:1;transform:none}
   .stat b{font-size:14pt;-webkit-text-fill-color:#111;color:#111}
@@ -370,10 +374,10 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
        linkedin.com/in/jadzoghaib · github.com/jadzoghaib<br />
        Barcelona, Spain · Venezuelan &amp; Lebanese · Spanish work permit</p>
   </div>
-  <div class="eyebrow">Strategy · Data · Deployed Systems</div>
-  <h1>Strategy work ends at the recommendation. <br /><span class="grad">I build what comes after.</span></h1>
-  <p class="lede">Jad Zoghaib. Four years of management consulting across the MENA region (growth strategy, market entry, operational turnarounds, investment analysis) and an MSc in Business Analytics at ESADE. I now build the systems those engagements used to hand over as a recommendation.</p>
-  <p class="sub">Energy, industrials, TMT, healthcare, fintech, entertainment, consumer. The pattern holds across all of them: someone is accountable for a decision, the evidence is scattered across systems that do not talk to each other, and the answer arrives after it would have mattered. That distance is the work.</p>
+  <p class="greeting"><span class="greet-text" id="greet">Hello</span><span class="caret" aria-hidden="true"></span>, I’m</p>
+  <h1><span class="grad">Jad Zoghaib</span></h1>
+  <p class="lede">I’m a strategy and analytics professional based in Barcelona, with four years of management consulting across the Middle East and North Africa in growth strategy, market entry, operational improvement and investment analysis.</p>
+  <p class="sub">I’m currently finishing an MSc in Business Analytics at ESADE, where I’ve built data and AI products end to end, from process-intelligence consoles to LLM pipelines. I’ve worked across energy, industrials, TMT, healthcare, fintech, entertainment and consumer sectors.</p>
   <div class="hero-cta">
     <a class="btn primary" href="#work">See the work →</a>
     <a class="btn ghost" href="#experience">Read the CV</a>
@@ -1003,6 +1007,35 @@ function afterPrint(){
 }
 addEventListener('beforeprint', beforePrint);
 addEventListener('afterprint', afterPrint);
+
+/* ---------------- cycling greeting ---------------- */
+const GREETINGS = [
+  {t:'Hello',   lang:'en'},
+  {t:'Bonjour', lang:'fr'},
+  {t:'Hola',    lang:'es'},
+  {t:'مرحبا',       lang:'ar'},
+  {t:'Bon dia', lang:'ca'},
+  {t:'Ciao',    lang:'it'},
+  {t:'Hallo',   lang:'de'},
+];
+const greetEl = document.getElementById('greet');
+if(greetEl && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  // Starts mid-cycle on the "Hello" already in the markup, so there is no
+  // flash of empty text before the first character is typed.
+  let i = 0, ch = GREETINGS[0].t.length, deleting = true;
+  const step = () => {
+    const g = GREETINGS[i];
+    greetEl.setAttribute('lang', g.lang);
+    greetEl.setAttribute('dir', g.lang === 'ar' ? 'rtl' : 'ltr');
+    ch += deleting ? -1 : 1;
+    greetEl.textContent = g.t.slice(0, ch);
+    let wait = deleting ? 55 : 95;
+    if(!deleting && ch >= g.t.length){ deleting = true; wait = 1700; }
+    else if(deleting && ch <= 0){ deleting = false; i = (i + 1) % GREETINGS.length; wait = 240; }
+    setTimeout(step, wait);
+  };
+  setTimeout(step, 1900);
+}
 
 /* ---------------- misc ---------------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
