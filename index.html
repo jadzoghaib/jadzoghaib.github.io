@@ -10,6 +10,8 @@
 <meta property="og:description" content="Strategy and analytics, based in Barcelona. Portfolio, full CV, source and live demos." />
 <meta property="og:type" content="profile" />
 <meta property="og:url" content="https://jadzoghaib.github.io/" />
+<meta property="og:image" content="https://jadzoghaib.github.io/jad-zoghaib.jpg" />
+<meta property="og:image:alt" content="Jad Zoghaib" />
 <meta name="twitter:card" content="summary" />
 <link rel="canonical" href="https://jadzoghaib.github.io/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -121,6 +123,22 @@ h1 .grad{background:linear-gradient(120deg,#a78bfa,#4f9cf9 50%,#2fbfa4);
 .greeting,h1,.lede,.sub,.hero-cta,.stats{transform:translateY(18px)}
 
 .stats{display:flex;gap:44px;margin-top:56px;flex-wrap:wrap;opacity:0;animation:rise .7s .62s forwards}
+
+/* portrait: circular so the photo's light grey studio background does not sit
+   on the dark page as a bright rectangle */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,24vw,300px);
+  gap:clamp(30px,5vw,70px);align-items:center}
+.hero-photo{position:relative;isolation:isolate;opacity:0;transform:translateY(18px);
+  animation:rise .7s .28s forwards}
+.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;
+  border-radius:50%;border:1px solid #ffffff1a;box-shadow:0 24px 70px #000a}
+.hero-photo::before{content:"";position:absolute;inset:-14px;border-radius:50%;z-index:-1;
+  background:conic-gradient(from 210deg,#a78bfa,#4f9cf9,#2fbfa4,#a78bfa);
+  opacity:.4;filter:blur(18px)}
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .hero-photo{order:-1;width:clamp(130px,38vw,200px)}
+}
 .stat b{display:block;font-size:34px;font-weight:800;font-family:var(--mono);
   background:linear-gradient(120deg,#a78bfa,#4f9cf9);-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent}
@@ -279,7 +297,7 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
     transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .greeting,h1,.lede,.sub,.hero-cta,.stats{opacity:1;transform:none}
+  .greeting,h1,.lede,.sub,.hero-cta,.stats,.hero-photo{opacity:1;transform:none}
   .caret{display:none}
   .card,.reveal{opacity:1;transform:none}
 }
@@ -295,7 +313,8 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
   .print-id h2{font-size:21pt;font-weight:800;letter-spacing:-.6px;line-height:1.1;color:#111!important}
   .print-id p{font-size:9pt;color:#333!important;margin-top:4px;line-height:1.45}
   .print-id{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #ddd}
-  .greeting,h1,.screen-note{display:none!important}
+  .greeting,h1,.screen-note,.hero-photo{display:none!important}
+  .hero-grid{display:block}
   .lede,.sub{color:#333!important;font-size:10pt;max-width:none;animation:none;opacity:1;transform:none;margin-bottom:6px}
   .stats{gap:22px;margin-top:14px;animation:none;opacity:1;transform:none}
   .stat b{font-size:14pt;-webkit-text-fill-color:#111;color:#111}
@@ -374,7 +393,9 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
        linkedin.com/in/jadzoghaib · github.com/jadzoghaib<br />
        Barcelona, Spain · Venezuelan &amp; Lebanese · Spanish work permit</p>
   </div>
-  <p class="greeting"><span class="greet-text" id="greet">Hello</span><span class="caret" aria-hidden="true"></span>, I’m</p>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="greeting"><span class="greet-text" id="greet">Hello</span><span class="caret" aria-hidden="true"></span>, I’m</p>
   <h1><span class="grad">Jad Zoghaib</span></h1>
   <p class="lede">I’m a strategy and analytics professional based in Barcelona, with four years of management consulting across the Middle East and North Africa in growth strategy, market entry, operational improvement and investment analysis.</p>
   <p class="sub">I’m currently finishing an MSc in Business Analytics at ESADE, where I’ve built data and AI products end to end, from process-intelligence consoles to LLM pipelines. I’ve worked across energy, industrials, TMT, healthcare, fintech, entertainment and consumer sectors.</p>
@@ -382,6 +403,11 @@ footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;
     <a class="btn primary" href="#work">See the work →</a>
     <a class="btn ghost" href="#experience">Read the CV</a>
     <a class="btn ghost" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="jad-zoghaib.jpg" alt="Jad Zoghaib" width="800" height="800" decoding="async" />
+    </div>
   </div>
   <div class="stats">
     <div class="stat"><b data-count="4" data-suffix="+">0</b><span>Years consulting</span></div>
