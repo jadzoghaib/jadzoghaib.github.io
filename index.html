@@ -3,15 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jad Zoghaib — Data · Strategy · Product</title>
-<meta name="description" content="Jad Zoghaib — portfolio of data, AI, and product work across life sciences, cybersecurity, supply chain, energy, finance, HR and sports. Live demos, process intelligence, and operational software." />
-<meta property="og:title" content="Jad Zoghaib — Portfolio" />
-<meta property="og:description" content="Data · AI · Product across industries — with live, interactive demos." />
-<meta property="og:type" content="website" />
+<title>Jad Zoghaib — Strategy · Data · AI Product</title>
+<meta name="description" content="Jad Zoghaib — strategy and analytics. Four years of management consulting across MENA, an MSc in Business Analytics at ESADE, and 20 end-to-end data, AI and product builds. Full CV and live demos." />
+<meta name="author" content="Jad Zoghaib" />
+<meta property="og:title" content="Jad Zoghaib — Strategy · Data · AI Product" />
+<meta property="og:description" content="Consulting background, analytics training, and software that ships. Full interactive CV with live demos." />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://jadzoghaib.github.io/" />
+<meta name="twitter:card" content="summary" />
+<link rel="canonical" href="https://jadzoghaib.github.io/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AD%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="mask-icon" href="favicon.svg" color="#7c6cff" />
+<meta name="theme-color" content="#0a0b10" />
 <style>
 :root{
   --bg:#0a0b10; --bg-2:#0f111a; --panel:#141826; --panel-2:#1a2030; --line:#252c3f;
@@ -21,6 +27,7 @@
   --sports:#c583f2; --health:#3fd0a8; --ai:#8a7cff; --cloud:#5ac8e0; --viz:#f5a623;
   --energy:#d98c5f;
   --sans:'Inter',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --nav-h:62px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -29,6 +36,7 @@ a{color:inherit;text-decoration:none}
 ::selection{background:var(--accent);color:#fff}
 ::-webkit-scrollbar{width:11px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
 /* ---------- background ---------- */
 .bg-orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
@@ -40,63 +48,107 @@ a{color:inherit;text-decoration:none}
 .grain{position:fixed;inset:0;z-index:-1;opacity:.025;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
+/* ---------- scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;pointer-events:none;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2) 60%,var(--hr))}
+
 /* ---------- nav ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
-  padding:16px 6vw;backdrop-filter:blur(12px);background:#0a0b10aa;border-bottom:1px solid transparent;transition:border-color .3s}
+  height:var(--nav-h);padding:0 6vw;backdrop-filter:blur(12px);background:#0a0b10cc;
+  border-bottom:1px solid transparent;transition:border-color .3s}
 nav.scrolled{border-color:var(--line)}
-nav .logo{font-family:var(--mono);font-weight:500;letter-spacing:1px;font-size:15px}
-nav .logo b{color:var(--accent)}
-nav .links{display:flex;gap:26px;align-items:center;font-size:14px}
-nav .links a{color:var(--muted);transition:color .2s}
-nav .links a:hover{color:var(--text)}
-nav .cta{padding:8px 16px;border:1px solid var(--accent);border-radius:8px;color:var(--accent)!important;font-weight:600}
-nav .cta:hover{background:var(--accent);color:#fff!important}
-@media(max-width:720px){nav .links a:not(.cta){display:none}}
+.brand{display:flex;align-items:center;gap:11px;font-weight:600;font-size:15px;letter-spacing:-.2px}
+.mark{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,#a78bfa,#7c6cff 50%,#4f9cf9);color:#0a0b10;
+  font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:-.5px}
+nav .links{display:flex;gap:24px;align-items:center;font-size:14px}
+nav .links a.nl{color:var(--muted);transition:color .2s;position:relative;padding:4px 0}
+nav .links a.nl::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;
+  background:var(--accent);border-radius:2px;transform:scaleX(0);transition:transform .22s}
+nav .links a.nl:hover{color:var(--text)}
+nav .links a.nl.active{color:var(--text)}
+nav .links a.nl.active::after{transform:scaleX(1)}
+.cta{padding:8px 15px;border:1px solid var(--accent);border-radius:9px;color:var(--accent);
+  font-weight:600;font-size:14px;background:none;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+.cta:hover{background:var(--accent);color:#fff}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:9px;
+  width:40px;height:36px;cursor:pointer;place-items:center;color:var(--text)}
+.burger span{display:block;width:17px;height:2px;background:currentColor;border-radius:2px;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:17px;height:2px;
+  background:currentColor;border-radius:2px;transition:.22s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger.open span{background:transparent}
+.burger.open span::before{top:0;transform:rotate(45deg)}
+.burger.open span::after{top:0;transform:rotate(-45deg)}
+@media(max-width:900px){
+  .burger{display:grid}
+  nav .links{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--bg-2);border-bottom:1px solid var(--line);padding:6px 6vw 18px;
+    transform:translateY(-10px);opacity:0;pointer-events:none;transition:transform .22s,opacity .22s}
+  nav .links.open{transform:none;opacity:1;pointer-events:auto}
+  nav .links a.nl{padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+  nav .links a.nl::after{display:none}
+  nav .links .cta{margin-top:14px;text-align:center}
+}
 
 /* ---------- hero ---------- */
-header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 6vw 60px;max-width:1200px;margin:0 auto}
-.eyebrow{font-family:var(--mono);color:var(--accent);font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:rise .7s .1s forwards}
-h1{font-size:clamp(40px,7vw,82px);font-weight:800;letter-spacing:-2px;line-height:1.02;margin-bottom:22px;opacity:0;animation:rise .7s .2s forwards}
-h1 .grad{background:linear-gradient(120deg,#a78bfa,#4f9cf9 50%,#2fbfa4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.lede{font-size:clamp(17px,2.2vw,22px);color:var(--muted);max-width:680px;margin-bottom:16px;opacity:0;animation:rise .7s .32s forwards}
-.sub{color:var(--dim);max-width:640px;margin-bottom:36px;opacity:0;animation:rise .7s .4s forwards}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .7s .5s forwards}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;font-weight:600;font-size:15px;transition:transform .18s,box-shadow .18s,background .2s,border-color .2s;border:1px solid var(--line)}
+header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 6vw 60px;max-width:1200px;margin:0 auto}
+.eyebrow{font-family:var(--mono);color:var(--accent);font-size:13px;letter-spacing:2.5px;
+  text-transform:uppercase;margin-bottom:20px;opacity:0;animation:rise .7s .1s forwards}
+h1{font-size:clamp(38px,6.6vw,78px);font-weight:800;letter-spacing:-2px;line-height:1.03;
+  margin-bottom:22px;opacity:0;animation:rise .7s .2s forwards}
+h1 .grad{background:linear-gradient(120deg,#a78bfa,#4f9cf9 50%,#2fbfa4);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lede{font-size:clamp(17px,2.2vw,21px);color:var(--muted);max-width:700px;margin-bottom:16px;
+  opacity:0;animation:rise .7s .32s forwards}
+.sub{color:var(--dim);max-width:660px;margin-bottom:36px;opacity:0;animation:rise .7s .4s forwards}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap;opacity:0;animation:rise .7s .5s forwards}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;font-weight:600;
+  font-size:15px;font-family:var(--sans);cursor:pointer;
+  transition:transform .18s,box-shadow .18s,background .2s,border-color .2s,color .2s;border:1px solid var(--line)}
 .btn.primary{background:linear-gradient(120deg,var(--accent),#5a7cf5);color:#fff;border:none;box-shadow:0 8px 30px var(--glow)}
 .btn.primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px var(--glow)}
 .btn.ghost{background:var(--panel);color:var(--text)}
 .btn.ghost:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
 @keyframes rise{to{opacity:1;transform:translateY(0)}}
-.eyebrow,h1,.lede,.sub,.hero-cta{transform:translateY(18px)}
+.eyebrow,h1,.lede,.sub,.hero-cta,.stats{transform:translateY(18px)}
 
-/* stat strip */
-.stats{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap;opacity:0;animation:rise .7s .62s forwards;transform:translateY(18px)}
-.stat b{display:block;font-size:34px;font-weight:800;font-family:var(--mono);background:linear-gradient(120deg,#a78bfa,#4f9cf9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.stat span{color:var(--dim);font-size:13px;letter-spacing:.5px}
+.stats{display:flex;gap:44px;margin-top:56px;flex-wrap:wrap;opacity:0;animation:rise .7s .62s forwards}
+.stat b{display:block;font-size:34px;font-weight:800;font-family:var(--mono);
+  background:linear-gradient(120deg,#a78bfa,#4f9cf9);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.stat span{color:var(--dim);font-size:12px;letter-spacing:.8px;text-transform:uppercase}
 
-/* ---------- work section ---------- */
-main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
-.sec-title{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
-.sec-title h2{font-size:32px;font-weight:800;letter-spacing:-1px}
-.sec-title .count{font-family:var(--mono);color:var(--dim);font-size:14px}
-.sec-note{color:var(--muted);margin-bottom:26px;max-width:640px}
+/* ---------- layout / section headers ---------- */
+main{max-width:1200px;margin:0 auto;padding:0 6vw 40px}
+.sec{padding-top:96px;scroll-margin-top:var(--nav-h)}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:2px;flex:none}
+.sec-head h2{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-1.2px}
+.sec-head .count{font-family:var(--mono);color:var(--dim);font-size:13px}
+.rule{height:1px;background:linear-gradient(90deg,var(--line) 0%,var(--line) 30%,transparent 100%);margin:16px 0 22px}
+.sec-note{color:var(--muted);margin-bottom:26px;max-width:680px;font-size:15px}
 
-.controls{display:flex;flex-direction:column;gap:16px;margin-bottom:30px;position:sticky;top:66px;z-index:20;
-  padding:14px 0;background:linear-gradient(var(--bg),var(--bg) 70%,transparent)}
-.search{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 16px;max-width:380px}
+/* ---------- work ---------- */
+.controls{display:flex;flex-direction:column;gap:16px;margin-bottom:28px;position:sticky;top:var(--nav-h);z-index:20;
+  padding:14px 0;background:linear-gradient(var(--bg),var(--bg) 72%,transparent)}
+.search{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+  border-radius:11px;padding:11px 16px;max-width:400px}
+.search:focus-within{border-color:var(--accent)}
 .search input{background:none;border:none;outline:none;color:var(--text);font-size:15px;width:100%;font-family:var(--sans)}
 .search svg{flex:none;stroke:var(--dim)}
+.search kbd{font-family:var(--mono);font-size:10px;color:var(--dim);border:1px solid var(--line);
+  border-radius:5px;padding:2px 6px;flex:none}
 .filters{display:flex;gap:9px;flex-wrap:wrap}
 .chip{font-size:13px;font-weight:500;padding:7px 15px;border-radius:20px;border:1px solid var(--line);
-  background:var(--panel);color:var(--muted);cursor:pointer;transition:all .18s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+  background:var(--panel);color:var(--muted);cursor:pointer;transition:all .18s;white-space:nowrap;
+  display:flex;align-items:center;gap:7px;font-family:var(--sans)}
 .chip:hover{border-color:var(--muted);color:var(--text)}
 .chip.on{background:var(--text);color:#0a0b10;border-color:var(--text);font-weight:600}
 .chip .dot{width:8px;height:8px;border-radius:50%}
 .chip .k{font-family:var(--mono);font-size:11px;opacity:.6}
 
-/* cards grid */
-/* min() keeps the track from forcing a 340px column on phones narrower than that,
-   which otherwise scrolls the whole page sideways. */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:20px}
 .card{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
   border-radius:16px;padding:22px;display:flex;flex-direction:column;overflow:hidden;
@@ -106,7 +158,8 @@ main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
 .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:.9}
 .card.hide{display:none}
 .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px 12px;margin-bottom:14px;flex-wrap:wrap}
-.card .ind{font-family:var(--mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--card-accent,var(--accent));display:flex;align-items:center;gap:6px;font-weight:500;white-space:nowrap}
+.card .ind{font-family:var(--mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--card-accent,var(--accent));display:flex;align-items:center;gap:6px;font-weight:500;white-space:nowrap}
 .card .ind .dot{width:7px;height:7px;border-radius:50%;background:var(--card-accent,var(--accent));flex:none}
 .card .flags{display:flex;gap:6px;flex-wrap:wrap}
 .tagpill{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
@@ -117,7 +170,8 @@ main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
 .card h3{font-size:19px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
 .card p{color:var(--muted);font-size:14px;flex:1;margin-bottom:16px}
 .card .tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.tech span{font-size:11px;font-family:var(--mono);color:var(--dim);background:var(--panel-2);padding:3px 9px;border-radius:6px;border:1px solid var(--line)}
+.tech span{font-size:11px;font-family:var(--mono);color:var(--dim);background:var(--panel-2);
+  padding:3px 9px;border-radius:6px;border:1px solid var(--line)}
 .card .actions{display:flex;gap:10px;margin-top:auto}
 .act{flex:1;text-align:center;padding:10px;border-radius:9px;font-size:13px;font-weight:600;border:1px solid var(--line);transition:all .18s}
 .act.demo{background:var(--card-accent,var(--accent));color:#fff;border:none}
@@ -126,17 +180,92 @@ main{max-width:1200px;margin:0 auto;padding:40px 6vw 100px}
 .act.code:hover{border-color:var(--text);color:var(--text)}
 .act.disabled{color:var(--dim);cursor:default;opacity:.6}
 .actions.deep{margin-top:8px}
-.act.docs{color:var(--card-accent,var(--accent));border-color:var(--card-accent,var(--accent));
-  border-style:dashed;background:transparent}
+.act.docs{color:var(--card-accent,var(--accent));border-color:var(--card-accent,var(--accent));border-style:dashed;background:transparent}
 .act.docs:hover{border-style:solid;transform:translateY(-2px)}
 .empty{grid-column:1/-1;text-align:center;color:var(--dim);padding:60px;font-family:var(--mono)}
 
+/* ---------- expandable entries (experience + education) ---------- */
+.expand-all{background:none;border:1px solid var(--line);color:var(--muted);border-radius:20px;
+  padding:6px 14px;font-size:13px;font-family:var(--sans);cursor:pointer;transition:.18s}
+.expand-all:hover{border-color:var(--accent);color:var(--accent)}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:6px;top:26px;bottom:26px;width:2px;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2) 55%,transparent)}
+.entry{position:relative;margin-bottom:14px}
+.entry::before{content:"";position:absolute;left:-30px;top:26px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent-2);z-index:1;transition:.2s}
+.entry[open]::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px var(--glow)}
+.entry>summary{list-style:none;cursor:pointer;padding:18px 20px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(180deg,var(--panel),var(--bg-2));transition:border-color .2s,background .2s}
+.entry>summary::-webkit-details-marker{display:none}
+.entry>summary:hover{border-color:var(--accent-2)}
+.entry[open]>summary{border-color:var(--accent);border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:transparent}
+.sum-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.sum-top h3{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.when{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
+.role{color:var(--accent-2);font-size:14.5px;font-weight:500;margin-top:2px}
+.where{color:var(--dim);font-size:13px;margin-top:2px}
+.sum-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:13px}
+.mini-tags{display:flex;gap:6px;flex-wrap:wrap}
+.mini-tags span{font-family:var(--mono);font-size:10.5px;color:var(--dim);border:1px solid var(--line);
+  padding:2px 8px;border-radius:20px}
+.chev{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.5px;white-space:nowrap;flex:none}
+.entry[open] .chev .lbl-open{display:none}
+.entry:not([open]) .chev .lbl-close{display:none}
+.body{border:1px solid var(--accent);border-top:none;border-radius:0 0 14px 14px;
+  padding:4px 20px 20px;background:var(--bg-2)}
+.highlight{display:inline-block;font-size:13px;font-family:var(--mono);color:var(--hr);
+  background:#2fbfa412;border:1px solid #2fbfa444;border-radius:8px;padding:7px 12px;margin:14px 0 4px}
+.body ul{list-style:none;margin-top:12px}
+.body li{position:relative;padding-left:20px;margin-bottom:11px;color:var(--muted);font-size:14.5px}
+.body li::before{content:"▸";position:absolute;left:0;top:-1px;color:var(--accent);font-size:13px}
+.body li b{color:var(--text);font-weight:600}
+.body li em{color:var(--accent-2);font-style:normal;font-weight:600}
+.body a.inline{color:var(--accent-2);border-bottom:1px dashed var(--accent-2)}
+.body a.inline:hover{border-bottom-style:solid}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px}
+.skill{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
+  border-radius:16px;padding:22px;transition:border-color .25s,transform .25s}
+.skill:hover{border-color:var(--sk,var(--accent));transform:translateY(-4px)}
+.skill h3{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:9px;letter-spacing:-.2px}
+.skill h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--sk,var(--accent));flex:none}
+.skill ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.skill li{font-size:12.5px;font-family:var(--mono);color:var(--muted);background:var(--panel-2);
+  border:1px solid var(--line);padding:4px 10px;border-radius:7px;transition:.18s}
+.skill:hover li{border-color:var(--sk,var(--accent))44;color:var(--text)}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:1.55fr 1fr;gap:24px;align-items:start}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+.about-text p{color:var(--muted);margin-bottom:16px;font-size:15.5px;max-width:62ch}
+.about-text p b{color:var(--text);font-weight:600}
+.facts{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
+  border-radius:16px;padding:22px;position:sticky;top:calc(var(--nav-h) + 20px)}
+@media(max-width:860px){.facts{position:static}}
+.fact{padding:13px 0;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:none;padding-bottom:0}
+.fact:first-child{padding-top:0}
+.fact dt{font-family:var(--mono);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.fact dd{font-size:14.5px;color:var(--text)}
+.fact dd .sm{color:var(--dim);font-size:13px}
+.langbar{display:flex;flex-direction:column;gap:9px;margin-top:2px}
+.lang{display:flex;align-items:center;gap:10px;font-size:13.5px}
+.lang .nm{width:64px;flex:none;color:var(--text)}
+.lang .track{flex:1;height:5px;border-radius:4px;background:var(--panel-2);border:1px solid var(--line);overflow:hidden}
+.lang .fill{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition:width 1s cubic-bezier(.2,.7,.3,1)}
+.lang .lvl{font-family:var(--mono);font-size:10.5px;color:var(--dim);width:56px;flex:none;text-align:right}
+
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:60px 6vw;max-width:1200px;margin:0 auto;text-align:center}
-footer h2{font-size:28px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
-footer p{color:var(--muted);margin-bottom:28px}
-.foot-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
-.foot-note{color:var(--dim);font-size:13px;font-family:var(--mono)}
+footer{border-top:1px solid var(--line);padding:70px 6vw 60px;max-width:1200px;margin:80px auto 0;text-align:center}
+footer h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;margin-bottom:12px;letter-spacing:-.6px}
+footer p{color:var(--muted);margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto}
+.foot-links{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.foot-note{color:var(--dim);font-size:12.5px;font-family:var(--mono)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
 .reveal.in{opacity:1;transform:translateY(0)}
 
@@ -147,61 +276,410 @@ footer p{color:var(--muted);margin-bottom:28px}
   .eyebrow,h1,.lede,.sub,.hero-cta,.stats{opacity:1;transform:none}
   .card,.reveal{opacity:1;transform:none}
 }
+
+/* ---------- print: the page becomes a clean CV ---------- */
+@media print{
+  @page{margin:14mm}
+  html,body{background:#fff!important;color:#111!important;font-size:10.5pt;overflow:visible}
+  .bg-orbs,.grain,#progress,nav,.controls,.hero-cta,.expand-all,.chev,footer .foot-links,
+  .act,.actions,.tagpill.star,.tagpill.live,.tagpill.wake,.search{display:none!important}
+  a{color:#111!important;text-decoration:none}
+  header{min-height:0;padding:0 0 14px;display:block}
+  .print-id h2{font-size:21pt;font-weight:800;letter-spacing:-.6px;line-height:1.1;color:#111!important}
+  .print-id p{font-size:9pt;color:#333!important;margin-top:4px;line-height:1.45}
+  .print-id{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #ddd}
+  h1{font-size:12pt;font-weight:700;letter-spacing:-.2px;margin-bottom:8px;color:#444!important;animation:none;opacity:1;transform:none}
+  h1 br{display:none}
+  h1 .grad{-webkit-text-fill-color:#444;color:#444}
+  .eyebrow,.screen-note{display:none!important}
+  .lede,.sub{color:#333!important;font-size:10pt;max-width:none;animation:none;opacity:1;transform:none;margin-bottom:6px}
+  .stats{gap:22px;margin-top:14px;animation:none;opacity:1;transform:none}
+  .stat b{font-size:14pt;-webkit-text-fill-color:#111;color:#111}
+  .stat span{color:#555!important;font-size:7.5pt}
+  main{padding:0;max-width:none}
+  .sec{padding-top:16px;page-break-inside:auto}
+  .sec-head h2{font-size:14pt;color:#111!important}
+  .sec-num{color:#666!important}
+  .rule{background:#bbb;margin:6px 0 10px}
+  .sec-note{color:#444!important;font-size:9pt;margin-bottom:10px}
+  .tl{padding-left:0}
+  .tl::before,.entry::before{display:none}
+  .entry,.card,.skill,.facts{page-break-inside:avoid;break-inside:avoid}
+  .entry>summary,.entry[open]>summary{background:none!important;border:none!important;
+    border-bottom:1px solid #ddd!important;border-radius:0;padding:8px 0 6px}
+  .body{border:none!important;background:none!important;padding:0 0 10px}
+  .sum-top h3{font-size:11pt;color:#111!important}
+  .role{color:#333!important;font-size:10pt}
+  .where,.when{color:#555!important;font-size:8.5pt}
+  .mini-tags span{color:#555!important;border-color:#ccc!important}
+  .highlight{color:#111!important;background:none!important;border:none!important;padding:6px 0 0;
+    font-weight:600;font-size:9pt}
+  .body li{color:#222!important;font-size:9.5pt;margin-bottom:5px}
+  .body li b,.body li em{color:#111!important}
+  .grid{display:block}
+  .card{opacity:1!important;transform:none!important;background:none!important;border:none!important;
+    border-bottom:1px solid #eee!important;border-radius:0;padding:6px 0;box-shadow:none!important}
+  .card::before{display:none}
+  .card h3{font-size:10.5pt;color:#111!important;margin-bottom:2px}
+  .card p{color:#333!important;font-size:9pt;margin-bottom:4px}
+  .card .ind{color:#666!important}
+  .tech span{color:#555!important;background:none!important;border-color:#ddd!important;font-size:8pt}
+  .skill{background:none!important;border:none!important;padding:6px 0}
+  .skill li{background:none!important;border:none!important;color:#333!important;font-size:8.5pt;padding:0 6px 0 0}
+  .skill li::after{content:" ·";color:#aaa}
+  .skills{grid-template-columns:1fr 1fr;gap:4px}
+  .about{grid-template-columns:1fr;gap:10px}
+  .about-text p{color:#222!important;font-size:9.5pt}
+  .facts{background:none!important;border:1px solid #ddd!important;padding:10px}
+  .fact dt{color:#666!important}.fact dd{color:#111!important;font-size:9.5pt}
+  .lang .track{display:none}.lang .nm{width:auto}.lang .lvl{color:#444!important;text-align:left;width:auto}
+  .lang{gap:6px}
+  footer{border-top:1px solid #ddd;margin-top:16px;padding:12px 0 0;text-align:left}
+  footer h2{font-size:11pt;color:#111!important}
+  footer p{color:#333!important;font-size:9pt;margin:0 0 4px}
+  .foot-note{color:#666!important;font-size:8pt}
+  .reveal{opacity:1!important;transform:none!important}
+  .print-only{display:block!important}
+}
+.print-only{display:none}
 </style>
 </head>
 <body>
+<div id="progress"></div>
 <div class="bg-orbs"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
 <div class="grain"></div>
 
 <nav id="nav">
-  <a class="logo" href="#top"><b>JZ</b> · Jad Zoghaib</a>
-  <div class="links">
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
-    <a class="cta" href="https://github.com/jadzoghaib" target="_blank" rel="noopener">GitHub ↗</a>
+  <a class="brand" href="#top"><span class="mark">JZ</span><span>Jad Zoghaib</span></a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span></button>
+  <div class="links" id="navlinks">
+    <a class="nl" href="#work">Work</a>
+    <a class="nl" href="#experience">Experience</a>
+    <a class="nl" href="#skills">Skills</a>
+    <a class="nl" href="#education">Education</a>
+    <a class="nl" href="#about">About</a>
+    <button class="cta" id="cv-btn" title="Opens your browser's print dialog — choose &quot;Save as PDF&quot;">Save CV ↓</button>
   </div>
 </nav>
 
 <header id="top">
-  <div class="eyebrow">Data · Strategy · Product</div>
-  <h1>I turn messy data into<br><span class="grad">software people can act on.</span></h1>
-  <p class="lede">I'm Jad Zoghaib — I build operational tools, AI copilots, and process-intelligence consoles across industries, from life sciences to cybersecurity to supply chain.</p>
-  <p class="sub">Business + data science background. I like the seam where strategy meets a working product — where an analysis becomes a system someone actually runs.</p>
+  <!-- Identity block: hidden on screen (the nav carries the name there), but a printed
+       CV has no nav, so it needs the name and contact details at the top. -->
+  <div class="print-only print-id">
+    <h2>Jad Zoghaib</h2>
+    <p>jadzoghaib@hotmail.com · linkedin.com/in/jadzoghaib · github.com/jadzoghaib<br />
+       Barcelona, Spain · Venezuelan &amp; Lebanese · Spanish work permit</p>
+  </div>
+  <div class="eyebrow">Strategy · Data · AI Product</div>
+  <h1>I turn business problems into <br /><span class="grad">systems people actually run.</span></h1>
+  <p class="lede">I'm Jad Zoghaib — strategy and analytics. Four years of management consulting across the MENA region, an MSc in Business Analytics at ESADE, and a preference for building the thing rather than only recommending it.</p>
+  <p class="sub">Energy, industrials, TMT, healthcare, fintech, entertainment, consumer. The sector changes; the method doesn't — find the decision, find the evidence, and ship something that makes the decision easier to make.</p>
   <div class="hero-cta">
     <a class="btn primary" href="#work">Explore the work →</a>
-    <a class="btn ghost" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="#experience">Read the CV</a>
+    <a class="btn ghost" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">LinkedIn ↗</a>
   </div>
   <div class="stats">
-    <div class="stat"><b data-count="20">0</b><span>PROJECTS</span></div>
-    <div class="stat"><b data-count="10">0</b><span>INDUSTRIES</span></div>
-    <div class="stat"><b data-count="9">0</b><span>LIVE DEMOS</span></div>
-    <div class="stat"><b data-count="9">0</b><span>END-TO-END BUILDS</span></div>
+    <div class="stat"><b data-count="4" data-suffix="+">0</b><span>Years consulting</span></div>
+    <div class="stat"><b data-count="20">0</b><span>Projects built</span></div>
+    <div class="stat"><b data-count="10">0</b><span>Industries</span></div>
+    <div class="stat"><b data-count="9">0</b><span>Live demos</span></div>
   </div>
 </header>
 
-<main id="work">
-  <div class="sec-title"><h2>Selected work</h2><span class="count" id="shown-count"></span></div>
-  <p class="sec-note">Filter by industry or search. A green badge means the demo opens instantly; an amber one is hosted on a free tier that sleeps when idle, so the first click wakes it — up to a minute. VaultTech is a private client-style project — described here, code on request.</p>
+<main>
+
+<!-- ============ 01 · WORK ============ -->
+<section class="sec" id="work">
+  <div class="sec-head">
+    <span class="sec-num">01</span><h2>Selected work</h2><span class="count" id="shown-count"></span>
+  </div>
+  <div class="rule"></div>
+  <p class="sec-note screen-note">Twenty end-to-end builds across ten industries. Featured is the short list — switch to <b>All</b> for the full set, or filter by industry. A green badge opens instantly; an amber one sleeps on a free tier, so the first click wakes it (up to a minute).</p>
+  <p class="sec-note print-only">Twenty end-to-end builds across ten industries. Live demos and source for each are linked at <b>jadzoghaib.github.io</b>.</p>
 
   <div class="controls">
     <div class="search">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="search" type="text" placeholder="Search projects, tech, or keywords…" autocomplete="off" />
+      <input id="search" type="text" placeholder="Search projects, tech, or keywords…" autocomplete="off" aria-label="Search projects" />
+      <kbd>/</kbd>
     </div>
     <div class="filters" id="filters"></div>
   </div>
 
   <div class="grid" id="grid"></div>
+</section>
+
+<!-- ============ 02 · EXPERIENCE ============ -->
+<section class="sec" id="experience">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Experience</h2></div>
+  <div class="rule"></div>
+  <div class="head-row">
+    <p class="sec-note" style="margin-bottom:0">Growth strategy, market entry, operational improvement and investment analysis — mostly in the Gulf and the Levant. <span class="screen-note">Click any role to open it.</span></p>
+    <button class="expand-all" data-target="#experience">Expand all</button>
+  </div>
+
+  <div class="tl">
+
+    <details class="entry" id="exp-180dc">
+      <summary>
+        <div class="sum-top"><h3>180 Degrees Consulting — Barcelona</h3><span class="when">2025 – 2026</span></div>
+        <div class="role">Analytics Team Lead</div>
+        <div class="where">Barcelona, Spain · concurrent with the MSc</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>Pro bono</span><span>ESG</span><span>LLM pipelines</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <ul>
+          <li>Designed and delivered a <b>supplier-risk platform</b> for a client — an LLM scoring pipeline over global news API ingestion, shipped as a REST API they could integrate directly.</li>
+          <li>Rebuilt the <b>Value Balancing Alliance's</b> VBA-based ESG value-factor calculator: validated KPIs against source and input data, and restructured output aggregation so the tool was actually usable by the teams meant to adopt it.</li>
+          <li>Led the analytics team across engagements — scoping, delivery, and handover.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="entry" id="exp-alamiya">
+      <summary>
+        <div class="sum-top"><h3>Alamiya Filmed Entertainment</h3><span class="when">Mar 2024 – May 2025</span></div>
+        <div class="role">Strategy Associate</div>
+        <div class="where">Dubai, UAE</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>Entertainment</span><span>Investment analysis</span><span>Process mining</span><span>Automation</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <div class="highlight">$15M operations budget modeled · $5–60M production investments evaluated</div>
+        <ul>
+          <li>Led data-driven strategy for a UAE entertainment group — market analysis, financial modeling and BI dashboards behind <b>multi-million-dollar content and investment decisions</b>.</li>
+          <li>Built scenario-based <b>ROI and synergy models</b> for production budgets in the $5–60M range, turning green-light calls into comparable cases.</li>
+          <li>Ran a <b>$15M operations budget</b> through integrated Excel/VBA simulation models, stress-testing capital allocation across productions and partnerships.</li>
+          <li>Co-designed the data infrastructure with in-house data scientists and assembled it into <b>Qlik</b> frameworks feeding box-office prediction models for Saudi and the wider MENA market.</li>
+          <li>Mapped the filmmaking lifecycle end to end — ideation to post-release — as a <em>process-mining</em> initiative documenting owners, handoffs and bottlenecks, then moved the organization onto Wrike for standardized workflow.</li>
+          <li>Automated data ingestion, process tagging and investment-pipeline tracking with <b>n8n</b> workflows, cutting manual reporting and making project status visible.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="entry" id="exp-euromena">
+      <summary>
+        <div class="sum-top"><h3>Euromena Consulting</h3><span class="when">Mar 2022 – Mar 2024</span></div>
+        <div class="role">Consultant</div>
+        <div class="where">Beirut, Lebanon</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>TMT</span><span>Energy</span><span>M&amp;A</span><span>Market entry</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <div class="highlight">SAR 650M in capital optimization delivered · 20+ M&amp;A targets screened</div>
+        <ul>
+          <li><b>TMT —</b> Led an OpEx audit and reorganization across a <b>400-person division</b> at a major Saudi telecom operator, restructuring labor, IT and network service contracts to deliver <em>SAR 650 million</em> in capital optimization within the Technology division.</li>
+          <li><b>TMT —</b> Ran ecosystem mapping, stakeholder analysis and competitive landscape assessment for a leading big-tech client to shape a <b>metaverse market-entry strategy</b> for MENA.</li>
+          <li><b>Energy —</b> Developed the go-to-market strategy for a top-tier French energy company, sizing cogeneration demand and identifying growth pockets across Saudi Arabia, the UAE and Qatar.</li>
+          <li><b>Facilities Management —</b> Ran due diligence on a GCC M&amp;A transaction — financial analysis and risk evaluation across <b>20+ targets</b> in FM, EPC, MEP and district cooling.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="entry" id="exp-pfc">
+      <summary>
+        <div class="sum-top"><h3>PFC-International</h3><span class="when">Dec 2020 – Mar 2022</span></div>
+        <div class="role">Business Analyst</div>
+        <div class="where">Beirut, Lebanon</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>Manufacturing</span><span>Healthcare</span><span>Feasibility</span><span>DCF</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <div class="highlight">5+ industrial ventures ($5–15M each) taken from idea to investable case</div>
+        <ul>
+          <li><b>Manufacturing —</b> Led feasibility studies for <b>5+ Qatar-based industrial ventures</b> in the $5–15M range (PVC panels, precast cement, lubricants), running a 3-person team through market, technical and financial due diligence.</li>
+          <li>Built <b>DCF models</b> across multiple scenarios — NPV, IRR and payback — as the basis for go/no-go recommendations.</li>
+          <li><b>Healthcare —</b> Led the feasibility study for a hospital in Doha, Qatar, providing the financial and operational case that <em>secured funding</em>.</li>
+          <li><b>Healthcare —</b> Designed the governance framework and operating structure for a mental-health facility in Lebanon, covering process optimization and regulatory compliance against patient-safety standards.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="entry" id="exp-moet">
+      <summary>
+        <div class="sum-top"><h3>Lebanese Ministry of Economy &amp; Trade</h3><span class="when">Jan 2020 – Apr 2020</span></div>
+        <div class="role">Research Analyst</div>
+        <div class="where">Beirut, Lebanon</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>Public sector</span><span>Policy</span><span>Economics</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <ul>
+          <li>Conducted policy research on fiscal and monetary measures and private-sector dynamics, <b>benchmarking global recovery models</b> against the Lebanese context.</li>
+          <li>Assessed feasibility and political risk for a proposed <b>special economic zone in Tripoli</b>.</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ============ 03 · SKILLS ============ -->
+<section class="sec reveal" id="skills">
+  <div class="sec-head"><span class="sec-num">03</span><h2>What I do</h2></div>
+  <div class="rule"></div>
+  <p class="sec-note">The consulting toolkit and the engineering toolkit, side by side — most of the work here needs both.</p>
+
+  <div class="skills">
+    <div class="skill" style="--sk:var(--ai)">
+      <h3><span class="dot"></span>Languages &amp; data</h3>
+      <ul><li>Python</li><li>pandas</li><li>NumPy</li><li>R</li><li>SQL</li><li>DuckDB</li><li>MongoDB</li><li>TypeScript</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--health)">
+      <h3><span class="dot"></span>Machine learning</h3>
+      <ul><li>scikit-learn</li><li>XGBoost</li><li>PyTorch</li><li>TensorFlow / Keras</li><li>Recommender systems</li><li>Feature engineering</li><li>Model evaluation</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--accent)">
+      <h3><span class="dot"></span>Generative AI</h3>
+      <ul><li>LLM application design</li><li>RAG</li><li>Prompt engineering</li><li>LangGraph</li><li>Multi-agent workflows</li><li>Token-cost optimization</li><li>Evaluation &amp; guardrails</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--cloud)">
+      <h3><span class="dot"></span>Cloud &amp; MLOps</h3>
+      <ul><li>AWS SageMaker</li><li>S3 · Lambda · EC2</li><li>ECS / Fargate</li><li>Docker</li><li>FastAPI</li><li>Streamlit</li><li>REST API design</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--supply)">
+      <h3><span class="dot"></span>Automation &amp; process</h3>
+      <ul><li>n8n orchestration</li><li>Process mining</li><li>Workflow design</li><li>Human-in-the-loop gates</li><li>Data pipelines</li><li>API integration</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--viz)">
+      <h3><span class="dot"></span>Visualization &amp; BI</h3>
+      <ul><li>Tableau</li><li>Power BI</li><li>Qlik</li><li>Plotly</li><li>React</li><li>Recharts</li><li>Dashboard design</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--finance)">
+      <h3><span class="dot"></span>Strategy &amp; finance</h3>
+      <ul><li>DCF · NPV · IRR</li><li>Financial modeling</li><li>Market entry</li><li>Due diligence</li><li>Feasibility studies</li><li>Scenario analysis</li><li>Excel / VBA</li></ul>
+    </div>
+    <div class="skill" style="--sk:var(--hr)">
+      <h3><span class="dot"></span>Ways of working</h3>
+      <ul><li>Agile</li><li>Product management</li><li>Stakeholder management</li><li>Client delivery</li><li>Team leadership</li><li>Git</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · EDUCATION ============ -->
+<section class="sec" id="education">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Education</h2></div>
+  <div class="rule"></div>
+  <div class="head-row">
+    <p class="sec-note" style="margin-bottom:0">Economics first, then analytics — with the projects that came out of each.</p>
+    <button class="expand-all" data-target="#education">Expand all</button>
+  </div>
+
+  <div class="tl">
+
+    <details class="entry" id="edu-esade" open>
+      <summary>
+        <div class="sum-top"><h3>ESADE Business School — Ramon Llull University</h3><span class="when">Sep 2025 – Sep 2026</span></div>
+        <div class="role">MSc in Business Analytics</div>
+        <div class="where">Barcelona, Spain · Grade 9.1 / 10</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>Capstone</span><span>Thesis</span><span>IIM Bangalore</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>Capstone — Banc Sabadell.</b> An offline simulation pitting XGBoost credit-scoring models against LLM-based decisioning across six experimental approaches — RAG prompting, prompt engineering, blended unstructured-data injection, and multi-LLM benchmarking with token-cost optimization — evaluated on AUC/F1, stability and explainability trade-offs under regulatory constraint. <a class="inline" href="https://github.com/jadzoghaib/Sabadell_Capstone" target="_blank" rel="noopener">Code ↗</a></li>
+          <li><b>MSc thesis.</b> A platform that finds clinical genetic test interpretations which have quietly gone stale, integrating AlphaFold, AlphaMissense, ClinVar, Ensembl VEP and Open Targets into a time-versioned Python/DuckDB architecture that reconstructs historical evidence on demand. Covered end-to-end implementation planning, commercialization and a seven-year financial model. <a class="inline" href="https://jadzoghaib.github.io/genetic-variant-triage/" target="_blank" rel="noopener">Live console ↗</a></li>
+          <li><b>Study tour — IIM Bangalore.</b> The Science of Data-Driven Decision Making.</li>
+          <li><b>Coursework.</b> Cloud Computing · Artificial Intelligence · Python · R · Digital Product Management · Fintech · Prototyping with Data and AI · Data Science in Finance · Recommender Systems · Agile Methodologies</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="entry" id="edu-lau">
+      <summary>
+        <div class="sum-top"><h3>Lebanese American University</h3><span class="when">Aug 2016 – Dec 2019</span></div>
+        <div class="role">BSc in Economics</div>
+        <div class="where">Beirut, Lebanon · Grade 3.4 / 4</div>
+        <div class="sum-foot">
+          <div class="mini-tags"><span>Econometrics</span><span>Operations research</span></div>
+          <span class="chev"><span class="lbl-open">Open ↓</span><span class="lbl-close">Close ↑</span></span>
+        </div>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>Coursework.</b> Operations Research · Stochastic Models · Econometrics · Monetary Theory · International Economics · Economics of Organizations &amp; Management · Economic Development · Political Economy · Calculus &amp; Differential Equations</li>
+          <li>The quantitative half of this degree is where the analytics work started — optimization and stochastic modeling before any of it was called data science.</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ============ 05 · ABOUT ============ -->
+<section class="sec reveal" id="about">
+  <div class="sec-head"><span class="sec-num">05</span><h2>About</h2></div>
+  <div class="rule"></div>
+
+  <div class="about">
+    <div class="about-text">
+      <p>I started in economics and consulting — feasibility studies, market entry, OpEx audits — where the deliverable was a recommendation and somebody else built the thing. Somewhere between a 400-person telecom reorganization and a box-office prediction model, I got more interested in the building.</p>
+      <p>The MSc at ESADE was the deliberate move. <b>Same problems, but now I can ship the system that answers them</b> — which is most of what's in the work section above: consoles, copilots and pipelines that someone could actually sit in front of on a Monday morning.</p>
+      <p>What hasn't changed is the starting point. Every project here begins with a decision a real person has to make — which variant to re-review, which supplier to worry about, which batch went wrong, which project to staff — and works backwards to the evidence that makes that call easier. The technology is whatever the decision needs, not the other way round.</p>
+      <p>Off the screen: rugby, which I've played long enough to have been <b>capped by the Lebanese national team</b>, and a standing preference for the version of a problem that's messier but real.</p>
+    </div>
+
+    <dl class="facts">
+      <div class="fact">
+        <dt>Based in</dt>
+        <dd>Barcelona, Spain <span class="sm">· Spanish work permit</span></dd>
+      </div>
+      <div class="fact">
+        <dt>Nationalities</dt>
+        <dd>Venezuelan &amp; Lebanese</dd>
+      </div>
+      <div class="fact">
+        <dt>Languages</dt>
+        <dd>
+          <div class="langbar">
+            <div class="lang"><span class="nm">Arabic</span><span class="track"><span class="fill" data-w="100"></span></span><span class="lvl">Native</span></div>
+            <div class="lang"><span class="nm">English</span><span class="track"><span class="fill" data-w="96"></span></span><span class="lvl">Fluent</span></div>
+            <div class="lang"><span class="nm">French</span><span class="track"><span class="fill" data-w="92"></span></span><span class="lvl">Fluent</span></div>
+            <div class="lang"><span class="nm">Spanish</span><span class="track"><span class="fill" data-w="76"></span></span><span class="lvl">Advanced</span></div>
+          </div>
+        </dd>
+      </div>
+      <div class="fact">
+        <dt>Sectors worked</dt>
+        <dd class="sm">Energy · Industrials · TMT · Healthcare · Fintech · Entertainment · Consumer · Public sector</dd>
+      </div>
+      <div class="fact">
+        <dt>Athletics</dt>
+        <dd>Rugby <span class="sm">· capped for Lebanon · international tournaments</span></dd>
+      </div>
+      <div class="fact">
+        <dt>Contact</dt>
+        <dd><a class="inline" href="mailto:jadzoghaib@hotmail.com">jadzoghaib@hotmail.com</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
 </main>
 
 <footer id="contact" class="reveal">
   <h2>Let's build something.</h2>
-  <p>Open to roles and collaborations in data, product, and applied AI — across any industry.</p>
+  <p>Always glad to talk about strategy, data and product work — across sectors and formats. Email is the fastest way to reach me.</p>
   <div class="foot-links">
-    <a class="btn primary" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">Connect on LinkedIn</a>
-    <a class="btn ghost" href="https://github.com/jadzoghaib" target="_blank" rel="noopener">GitHub Profile</a>
+    <a class="btn primary" href="mailto:jadzoghaib@hotmail.com">jadzoghaib@hotmail.com</a>
+    <a class="btn ghost" href="https://linkedin.com/in/jadzoghaib" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn ghost" href="https://github.com/jadzoghaib" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
-  <p class="foot-note">Built as a single hand-coded page · hosted on GitHub Pages · © <span id="yr"></span> Jad Zoghaib</p>
+  <p class="foot-note">Hand-coded single page · hosted on GitHub Pages · © <span id="yr"></span> Jad Zoghaib</p>
 </footer>
 
 <script>
@@ -247,6 +725,11 @@ const PROJECTS = [
    demo:"https://jadzoghaib-batch-traceability-root-cause-studio-for--app-zrys7k.streamlit.app/", wake:true,
    code:"https://github.com/jadzoghaib/Batch-Traceability-Root-Cause-Studio-for-Pharma-Manufacturing"},
 
+  {t:"Stride", ind:"sports", star:true,
+   d:"Athlete monetization and sponsorship platform: athletes own evidence-based marketability analytics, sponsors match campaign briefs against the pool with fully decomposable scoring, and the deal pipeline runs end to end. The analytics core is the CreatorLens engine, vendored and integrated rather than reimplemented.",
+   tech:["FastAPI","React","Supabase","TypeScript"],
+   code:"https://github.com/jadzoghaib/stride"},
+
   {t:"TalentFlow — Recruiter Copilot", ind:"hr", star:true,
    d:"An n8n-orchestrated hiring funnel over a hybrid matching engine: LLM profile extraction, cold-start scoring, recruiter review gates that resume paused workflows, and a weekly calibration loop.",
    tech:["Node 24","n8n","LLM","TypeScript"],
@@ -260,51 +743,33 @@ const PROJECTS = [
   {t:"TeamMatch — Talent Recommender", ind:"hr", star:true,
    d:"A hybrid recommender that staffs engineers to projects at portfolio scale: matrix factorization + content + personality signals with a cohesion-aware optimizer. 800 engineers, 300 projects.",
    tech:["React","TypeScript","Recommender","Optimization"],
-   demo:"https://google-talent-project-matching-reco.vercel.app", code:"https://github.com/jadzoghaib/Google-Talent-Project-Matching-Recommender-System"},
-
-  {t:"EnzySelect", ind:"health",
-   d:"Prioritizes candidate enzymes for PET plastic degradation against operating conditions and a testing budget — transparent, decomposable scoring with real AlphaFold and UniProt structural anchors. The candidate set is synthetic and the app says so on every screen: a prioritization signal, not a scientific claim.",
-   tech:["Python","Streamlit","AlphaFold","UniProt"],
-   demo:"https://enzyselect.streamlit.app/", code:"https://github.com/jadzoghaib/enzyselect"},
-
-  {t:"OilShield", ind:"energy",
-   d:"Strategic stress-testing console for oil & gas portfolios: build a company from typed assets, shape a 36-month Brent scenario, and watch break-evens, liquidity headroom and shut-in economics recompute. Revenues float with the commodity price while fixed costs keep running — that asymmetry is the product.",
-   tech:["Python","Streamlit","Plotly","Financial modelling"],
-   code:"https://github.com/jadzoghaib/oilshield"},
-
-  {t:"Stride", ind:"sports",
-   d:"Athlete monetization and sponsorship platform: athletes own evidence-based marketability analytics, sponsors match campaign briefs against the pool with fully decomposable scoring, and the deal pipeline runs end to end. The analytics core is the CreatorLens engine, vendored and integrated rather than reimplemented.",
-   tech:["FastAPI","React","Supabase","TypeScript"],
-   code:"https://github.com/jadzoghaib/stride"},
+   demo:"https://google-talent-project-matching-reco.vercel.app",
+   code:"https://github.com/jadzoghaib/Google-Talent-Project-Matching-Recommender-System"},
 
   {t:"VaultTech — Forging Line", ind:"cloud", star:true, priv:true,
    d:"An end-to-end cloud ML pipeline for an industrial forging line: a medallion data architecture feeding an XGBoost model, trained on SageMaker, served via ECS/Fargate, with a Streamlit operations dashboard.",
    tech:["AWS SageMaker","ECS/Fargate","XGBoost","Streamlit"]},
 
+  {t:"EnzySelect", ind:"health",
+   d:"Prioritizes candidate enzymes for PET plastic degradation against operating conditions and a testing budget — transparent, decomposable scoring with real AlphaFold and UniProt structural anchors. The candidate set is synthetic and the app says so on every screen: a prioritization signal, not a scientific claim.",
+   tech:["Python","Streamlit","AlphaFold","UniProt"],
+   demo:"https://enzyselect.streamlit.app/", wake:true, code:"https://github.com/jadzoghaib/enzyselect"},
+
+  {t:"OilShield", ind:"energy",
+   d:"Strategic stress-testing console for oil & gas portfolios: build a company from typed assets, shape a 36-month Brent scenario, and watch break-evens, liquidity headroom and shut-in economics recompute. Revenues float with the commodity price while fixed costs keep running — that asymmetry is the product.",
+   tech:["Python","Streamlit","Plotly","Financial modeling"],
+   code:"https://github.com/jadzoghaib/oilshield"},
+
   {t:"NIL Monetization Platform", ind:"sports",
    d:"An athlete name-image-likeness monetization platform — AI-assisted sponsorship matching between athletes and brands.",
    tech:["TypeScript","React","AI Matching"],
-   demo:"https://ioc-nil-monetization-platform-dpm.vercel.app", code:"https://github.com/jadzoghaib/IOC-NIL-Monetization-Platform_DPM"},
+   demo:"https://ioc-nil-monetization-platform-dpm.vercel.app",
+   code:"https://github.com/jadzoghaib/IOC-NIL-Monetization-Platform_DPM"},
 
   {t:"Movie Recommender", ind:"sports",
    d:"A MovieLens recommender with an EDA 'archive', a drift-simulation 'rabbit hole', and per-recommendation trade-off radars — deployed and live.",
    tech:["TypeScript","Recommender","EDA"],
    demo:"https://movie-rec-sys-lovat.vercel.app", code:"https://github.com/jadzoghaib/Movie-RecSys"},
-
-  {t:"Credit Default Prediction", ind:"finance",
-   d:"A credit-decision model on a Kaggle lending dataset — with a careful eye for leakage traps and an honest accuracy ceiling; best result from a diverse model stack.",
-   tech:["Python","scikit-learn","Jupyter"],
-   code:"https://github.com/jadzoghaib/DS-Finance-Credit-Default-"},
-
-  {t:"Sabadell Capstone", ind:"finance",
-   d:"A master's capstone in collaboration with Banco Sabadell — applied data analytics on a real banking problem.",
-   tech:["Python","Analytics","Jupyter"],
-   code:"https://github.com/jadzoghaib/Sabadell_Capstone"},
-
-  {t:"Breast Cancer Detection", ind:"health",
-   d:"A cloud-deployed ML classifier for breast-cancer detection — containerized and deployed as a final cloud-computing project.",
-   tech:["Python","AWS","ML"],
-   code:"https://github.com/jadzoghaib/CC_Breast_Cancer_Detection"},
 
   {t:"GroceryAI", ind:"supply",
    d:"Full-stack nutrition and grocery app: meal planning, LLM shopping-list generation against real Mercadona supermarket data, a fridge-to-recipe engine, a body optimizer, a health feed, and a multi-agent basket debate — all one SPA over a FastAPI server.",
@@ -312,15 +777,30 @@ const PROJECTS = [
    demo:"https://grocery-shopping-optimizer-pdai26.onrender.com", wake:true,
    code:"https://github.com/jadzoghaib/Grocery-Shopping-Optimizer-PDAI26"},
 
-  {t:"Hotel Booking AI", ind:"ai",
-   d:"Predictive analytics for hotel-booking cancellations — turning reservation data into a risk signal.",
-   tech:["Python","ML","Jupyter"],
-   code:"https://github.com/jadzoghaib/Hotel_Booking_AI2"},
+  {t:"Sabadell Capstone", ind:"finance",
+   d:"A master's capstone with Banc Sabadell: classical XGBoost credit scoring against LLM reasoned-decision engines — prompt-caching economics, SHAP versus natural-language rationales, confidence-gated hybrid routing, and RAG over precedent loans.",
+   tech:["Python","XGBoost","LLM","RAG"],
+   code:"https://github.com/jadzoghaib/Sabadell_Capstone"},
+
+  {t:"Credit Default Prediction", ind:"finance",
+   d:"Credit-decision classification on 25,000 loan applications, built around a deliberate target-leakage trap: one field reproduces the label at ~99%. Excluded on principle, with an honest ~0.86 out-of-fold accuracy reported instead.",
+   tech:["Python","scikit-learn","Jupyter"],
+   code:"https://github.com/jadzoghaib/DS-Finance-Credit-Default-"},
+
+  {t:"Breast Cancer Detection", ind:"health",
+   d:"A cloud-deployed ML classifier for breast-cancer detection — containerized and deployed as a final cloud-computing project.",
+   tech:["Python","AWS","ML"],
+   code:"https://github.com/jadzoghaib/CC_Breast_Cancer_Detection"},
 
   {t:"Boardroom Simulator", ind:"ai",
-   d:"An AI-driven boardroom decision simulator — a project in agentic decision-making.",
-   tech:["Python","AI","Simulation"],
+   d:"An 8-quarter startup simulation: quarterly events across six departments, LLM advisor chats, exec hiring, five fundraising stages, rival dynamics, and an ML success predictor scored at board reviews.",
+   tech:["Python","LLM","Simulation"],
    code:"https://github.com/jadzoghaib/Boardroom_Simulator_PDAI"},
+
+  {t:"Hotel Booking AI", ind:"ai",
+   d:"Cancellation prediction turned into an overbooking decision tool: given a caller requesting a room at a full hotel, accept or reject? Weighs predicted cancellation risk against the cost of walking a confirmed guest.",
+   tech:["Python","ML","Jupyter"],
+   code:"https://github.com/jadzoghaib/Hotel_Booking_AI2"},
 
   {t:"Hamlet Data Viz", ind:"viz",
    d:"NLP + visual analysis of Shakespeare's Hamlet — word frequency, sentiment arcs, and character networks in R.",
@@ -328,68 +808,64 @@ const PROJECTS = [
    code:"https://github.com/jadzoghaib/R_Hamlet_DataVizClub"},
 ];
 
-/* ---------------- render ---------------- */
+/* ---------------- render work grid ---------------- */
 const grid = document.getElementById('grid');
 const filtersEl = document.getElementById('filters');
-let activeInd = 'all', query = '';
+const WAKE_NOTE = 'Hosted on a free tier that sleeps when idle — the first click wakes it, which can take up to a minute.';
+let activeInd = 'feat', query = '';
 
 function cardHTML(p){
   const ind = IND[p.ind];
-  const WAKE_NOTE = 'Hosted on a free tier that sleeps when idle — the first click wakes it, which can take up to a minute.';
   const flags = [
     p.star ? '<span class="tagpill star">★ Featured</span>' : '',
     p.demo ? (p.wake
-      ? `<span class="tagpill wake" title="${WAKE_NOTE}">◐ Wakes on click</span>`
+      ? '<span class="tagpill wake" title="'+WAKE_NOTE+'">◐ Wakes on click</span>'
       : '<span class="tagpill live">● Live</span>') : '',
     p.priv ? '<span class="tagpill priv">Private</span>' : '',
   ].join('');
   const demoBtn = p.demo
-    ? `<a class="act demo" href="${p.demo}" target="_blank" rel="noopener"${p.wake ? ` title="${WAKE_NOTE}"` : ''}>${p.wake ? 'Wake the demo ↗' : 'Live demo ↗'}</a>` : '';
+    ? '<a class="act demo" href="'+p.demo+'" target="_blank" rel="noopener"'+(p.wake?' title="'+WAKE_NOTE+'"':'')+'>'+(p.wake?'Wake the demo ↗':'Live demo ↗')+'</a>' : '';
   const codeBtn = p.code
-    ? `<a class="act code" href="${p.code}" target="_blank" rel="noopener">Code ↗</a>`
-    : (p.priv ? `<span class="act disabled">Private repo</span>` : '');
+    ? '<a class="act code" href="'+p.code+'" target="_blank" rel="noopener">Code ↗</a>'
+    : (p.priv ? '<span class="act disabled">Private repo</span>' : '');
   const docsBtn = p.docs
-    ? `<a class="act docs" href="${p.docs.url}" target="_blank" rel="noopener">${p.docs.label} ↗</a>` : '';
-  const hay = (p.t+' '+p.d+' '+p.tech.join(' ')+' '+ind.label).toLowerCase();
-  return `<article class="card" data-ind="${p.ind}" data-hay="${hay.replace(/"/g,'')}" style="--card-accent:${ind.color}">
-    <div class="top">
-      <span class="ind"><span class="dot"></span>${ind.label}</span>
-      <span class="flags">${flags}</span>
-    </div>
-    <h3>${p.t}</h3>
-    <p>${p.d}</p>
-    <div class="tech">${p.tech.map(x=>`<span>${x}</span>`).join('')}</div>
-    <div class="actions">${demoBtn}${codeBtn || '<span class="act disabled">—</span>'}</div>
-    ${docsBtn ? `<div class="actions deep">${docsBtn}</div>` : ''}
-  </article>`;
+    ? '<a class="act docs" href="'+p.docs.url+'" target="_blank" rel="noopener">'+p.docs.label+' ↗</a>' : '';
+  const hay = (p.t+' '+p.d+' '+p.tech.join(' ')+' '+ind.label).toLowerCase().replace(/"/g,'');
+  return '<article class="card" data-ind="'+p.ind+'" data-star="'+(p.star?1:0)+'" data-hay="'+hay+'" style="--card-accent:'+ind.color+'">'
+    + '<div class="top"><span class="ind"><span class="dot"></span>'+ind.label+'</span><span class="flags">'+flags+'</span></div>'
+    + '<h3>'+p.t+'</h3><p>'+p.d+'</p>'
+    + '<div class="tech">'+p.tech.map(x=>'<span>'+x+'</span>').join('')+'</div>'
+    + '<div class="actions">'+demoBtn+(codeBtn||'<span class="act disabled">—</span>')+'</div>'
+    + (docsBtn ? '<div class="actions deep">'+docsBtn+'</div>' : '')
+    + '</article>';
 }
 
 grid.innerHTML = PROJECTS.map(cardHTML).join('');
 
-/* filter chips with per-industry counts */
+/* filter chips: Featured / All / per-industry counts */
 const counts = PROJECTS.reduce((m,p)=>(m[p.ind]=(m[p.ind]||0)+1,m),{});
-const chipData = [['all','All']].concat(Object.entries(IND).filter(([k])=>counts[k]).map(([k,v])=>[k,v.label]));
-filtersEl.innerHTML = chipData.map(([k,label])=>{
-  const n = k==='all' ? PROJECTS.length : counts[k];
-  const dot = k==='all' ? '' : `<span class="dot" style="background:${IND[k].color}"></span>`;
-  return `<button class="chip ${k==='all'?'on':''}" data-ind="${k}">${dot}${label}<span class="k">${n}</span></button>`;
+const featCount = PROJECTS.filter(p=>p.star).length;
+const chipData = [['feat','★ Featured',featCount],['all','All',PROJECTS.length]]
+  .concat(Object.entries(IND).filter(([k])=>counts[k]).map(([k,v])=>[k,v.label,counts[k]]));
+filtersEl.innerHTML = chipData.map(([k,label,n])=>{
+  const dot = (k==='all'||k==='feat') ? '' : '<span class="dot" style="background:'+IND[k].color+'"></span>';
+  return '<button class="chip'+(k===activeInd?' on':'')+'" data-ind="'+k+'">'+dot+label+'<span class="k">'+n+'</span></button>';
 }).join('');
 
 function apply(){
-  const cards = grid.querySelectorAll('.card');
-  let shown=0;
-  cards.forEach(c=>{
-    const okInd = activeInd==='all' || c.dataset.ind===activeInd;
-    const okQ = !query || c.dataset.hay.includes(query);
-    const vis = okInd && okQ;
+  let shown = 0;
+  grid.querySelectorAll('.card').forEach(c=>{
+    const okInd = activeInd==='all' ? true
+                : activeInd==='feat' ? c.dataset.star==='1'
+                : c.dataset.ind===activeInd;
+    const vis = okInd && (!query || c.dataset.hay.includes(query));
     c.classList.toggle('hide', !vis);
     if(vis) shown++;
   });
   document.getElementById('shown-count').textContent = shown+' shown';
-  let empty = grid.querySelector('.empty');
-  if(shown===0 && !empty){ grid.insertAdjacentHTML('beforeend','<div class="empty">No projects match — try another filter.</div>'); }
-  if(shown>0 && empty){ empty.remove(); }
-  // re-observe newly visible cards for reveal
+  const empty = grid.querySelector('.empty');
+  if(shown===0 && !empty) grid.insertAdjacentHTML('beforeend','<div class="empty">No projects match — try another filter.</div>');
+  if(shown>0 && empty) empty.remove();
   grid.querySelectorAll('.card:not(.hide)').forEach(c=>io.observe(c));
 }
 
@@ -398,39 +874,147 @@ filtersEl.addEventListener('click', e=>{
   filtersEl.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c===chip));
   activeInd = chip.dataset.ind; apply();
 });
-document.getElementById('search').addEventListener('input', e=>{ query = e.target.value.trim().toLowerCase(); apply(); });
+const searchEl = document.getElementById('search');
+searchEl.addEventListener('input', e=>{
+  query = e.target.value.trim().toLowerCase();
+  // A search should look across everything, not just the featured short list.
+  if(query && activeInd==='feat'){
+    activeInd = 'all';
+    filtersEl.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c.dataset.ind==='all'));
+  }
+  apply();
+});
+addEventListener('keydown', e=>{
+  if(e.key==='/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){
+    e.preventDefault(); searchEl.focus();
+  }
+  if(e.key==='Escape' && document.activeElement===searchEl){ searchEl.value=''; query=''; apply(); searchEl.blur(); }
+});
 
 /* ---------------- reveal on scroll ---------------- */
-const io = new IntersectionObserver((entries)=>{
+const io = new IntersectionObserver(entries=>{
   entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
 },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
 grid.querySelectorAll('.card').forEach((c,i)=>{ c.style.transitionDelay=(Math.min(i,8)*40)+'ms'; io.observe(c); });
 document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+apply();
 
-/* ---------------- misc ---------------- */
-document.getElementById('shown-count').textContent = PROJECTS.length+' shown';
-document.getElementById('yr').textContent = new Date().getFullYear();
+/* ---------------- expand-all toggles ---------------- */
+document.querySelectorAll('.expand-all').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const rows = document.querySelectorAll(btn.dataset.target+' .entry');
+    const opening = [...rows].some(d=>!d.open);
+    rows.forEach(d=>{ d.open = opening; });
+    btn.textContent = opening ? 'Collapse all' : 'Expand all';
+  });
+});
+/* Keep each button honest when entries are toggled individually. */
+document.querySelectorAll('.entry').forEach(d=>d.addEventListener('toggle', ()=>{
+  document.querySelectorAll('.expand-all').forEach(btn=>{
+    const rows = [...document.querySelectorAll(btn.dataset.target+' .entry')];
+    btn.textContent = rows.every(r=>r.open) ? 'Collapse all' : 'Expand all';
+  });
+}));
+
+/* ---------------- nav: scroll state, spy, mobile menu ---------------- */
 const nav = document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled', scrollY>20));
+const navLinks = document.getElementById('navlinks');
+const burger = document.getElementById('burger');
+const spyLinks = [...navLinks.querySelectorAll('a.nl')];
+const sections = spyLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const bar = document.getElementById('progress');
 
-/* count-up stats (plain rAF — reliable even in throttled tabs) */
+burger.addEventListener('click', ()=>{
+  const open = navLinks.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navLinks.addEventListener('click', e=>{
+  if(e.target.closest('a.nl')){
+    navLinks.classList.remove('open'); burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }
+});
+
+let ticking = false;
+function onScroll(){
+  nav.classList.toggle('scrolled', scrollY > 20);
+  const max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+
+  // Scroll-spy: the active section is the last one whose top has passed the nav.
+  const line = scrollY + parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 90;
+  let active = -1;
+  sections.forEach((s,i)=>{ if(s.getBoundingClientRect().top + scrollY <= line) active = i; });
+  // At the very bottom, always light up the final section.
+  if(max > 0 && scrollY >= max - 4) active = sections.length - 1;
+  spyLinks.forEach((a,i)=>a.classList.toggle('active', i === active));
+  ticking = false;
+}
+addEventListener('scroll', ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+onScroll();
+
+/* ---------------- count-up stats ---------------- */
 function countUp(el){
-  const target = +el.dataset.count; const dur=1100; const t0=performance.now();
+  const target = +el.dataset.count, suffix = el.dataset.suffix || '', dur = 1100, t0 = performance.now();
   (function tick(now){
     const p = Math.min(1,(now-t0)/dur);
-    el.textContent = Math.round(target*(1-Math.pow(1-p,3)));
-    if(p<1) requestAnimationFrame(tick); else el.textContent=target;
+    el.textContent = Math.round(target*(1-Math.pow(1-p,3))) + (p<1 ? '' : suffix);
+    if(p<1) requestAnimationFrame(tick); else el.textContent = target + suffix;
   })(t0);
 }
-const statsIO = new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting){ countUp(e.target); statsIO.unobserve(e.target);} }),{threshold:.6});
+const statsIO = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ countUp(e.target); statsIO.unobserve(e.target); }
+}),{threshold:.6});
 document.querySelectorAll('.stat b').forEach(s=>statsIO.observe(s));
-/* Safety net: if the tab is throttled, rAF can stall mid-count and leave a wrong
-   number on screen (20 showing as "2"). Snap anything that isn't final to final.
-   Same for the reveal observer — content must never stay invisible. */
+
+/* ---------------- language bars ---------------- */
+const langIO = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.querySelectorAll('.fill').forEach((f,i)=>setTimeout(()=>{ f.style.width = f.dataset.w+'%'; }, i*110));
+    langIO.unobserve(e.target);
+  }
+}),{threshold:.4});
+document.querySelectorAll('.langbar').forEach(l=>langIO.observe(l));
+
+/* ---------------- print / save as PDF ---------------- */
+let printState = null;
+function beforePrint(){
+  printState = {ind:activeInd, q:query, details:[...document.querySelectorAll('details')].map(d=>d.open)};
+  activeInd = 'all'; query = ''; searchEl.value = '';
+  apply();
+  document.querySelectorAll('details').forEach(d=>{ d.open = true; });
+  document.querySelectorAll('.card,.reveal').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('.fill').forEach(f=>{ f.style.width = f.dataset.w+'%'; });
+}
+function afterPrint(){
+  if(!printState) return;
+  activeInd = printState.ind; query = printState.q;
+  filtersEl.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c.dataset.ind===activeInd));
+  document.querySelectorAll('details').forEach((d,i)=>{ d.open = printState.details[i]; });
+  apply();
+  printState = null;
+}
+addEventListener('beforeprint', beforePrint);
+addEventListener('afterprint', afterPrint);
+document.getElementById('cv-btn').addEventListener('click', ()=>{
+  // Safari fires neither event reliably, so drive the state directly too.
+  beforePrint(); print(); setTimeout(afterPrint, 800);
+});
+
+/* ---------------- misc ---------------- */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Safety net: a throttled tab can stall rAF mid-count or leave content unrevealed.
+   Snap anything unfinished to its final state. */
 setTimeout(()=>{
-  document.querySelectorAll('.stat b').forEach(s=>{ if(s.textContent!==s.dataset.count) s.textContent=s.dataset.count; });
+  document.querySelectorAll('.stat b').forEach(s=>{
+    const final = s.dataset.count + (s.dataset.suffix||'');
+    if(s.textContent !== final) s.textContent = final;
+  });
   document.querySelectorAll('.card:not(.hide),.reveal').forEach(el=>el.classList.add('in'));
-},2500);
+  document.querySelectorAll('.lang .fill').forEach(f=>{ if(!f.style.width) f.style.width = f.dataset.w+'%'; });
+}, 2500);
 </script>
 </body>
 </html>
